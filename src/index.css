@@ -1,0 +1,72 @@
+@font-face {
+  font-family: "Aeonik";
+  src: url("assets/fonts/Aeonik_VariableGX.ttf") format("truetype");
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  -webkit-font-smoothing: antialiased !important;
+  background-color: var(--light);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+* {
+  font-family: "Aeonik", sans-serif;
+  font-weight: 87;
+  box-sizing: border-box;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  transition: outline 0.05s!important;
+}
+
+.toast div {
+  font-weight: 113;
+  font-style: normal;
+  font-size: 1rem;
+}
+
+:root {
+  --primary: #00A26C;
+  --primary_50: #00A26C7f;
+  --primary_25: #00A26C3f;
+  --secondary: #8383C2;
+  --accent: #D1FA94;
+  --gray: #d9d9d9;
+  --gray_border: #3F3F3F;
+  --gray_25: #383938;
+  --lightest_blue: #F5F7FA;
+  --blue_gray: #F2F4F2;
+  --dark: black;
+  --dark_80: rgba(0, 0, 0, 0.8);
+  --dark_60: rgba(0, 0, 0, 0.6);
+  --dark_50: rgba(0, 0, 0, 0.5);
+  --dark_35: rgba(0, 0, 0, 0.35);
+  --dark_15: rgba(0, 0, 0, 0.15);
+  --dark_contrast: #1A1A1A;
+  --dark_contrast_shadow: #444E49;
+  --light: #FAFAFA;
+  --light_75: #FAFAFAbf;
+  --light_50: #FAFAFA80;
+  --light_contrast: #F5F5F5;
+  --light_contrast_80: rgba(245, 245, 245, 0.8);
+  --light_contrast_50: rgba(245, 245, 245, 0.5);
+  --light_contrast_shadow: #8C959E;
+  --inline_padding: 2rem;
+  --max_width: 83.75rem;
+  --min_width: 25rem;
+}
+
+@media (max-width: 768px) {
+  :root {
+      --inline_padding: 1.5rem;
+  }
+}

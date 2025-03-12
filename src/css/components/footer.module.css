@@ -1,0 +1,17 @@
+/* || FOOTER SECTION */
+#footer_section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#footer_container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    width: clamp(var(--min_width), 100%, var(--max_width));
+}

@@ -1,0 +1,199 @@
+#nav_container {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 1rem;
+    width: 100%;
+    height: 6rem;
+    background-color: var(--light);
+}  
+
+#nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    height: 4.15rem;
+    width: clamp(var(--min_width), 100%, var(--max_width));
+    border-radius: 0.5rem;
+    border: 1.5px solid var(--dark);
+    background: var(--light);
+}
+
+#logo_container {
+    display: flex;
+    align-items: center;
+}
+
+#logo, #mini_logo {
+    width: 2.75rem;
+    height: 2.625rem;
+    flex-shrink: 0;
+    aspect-ratio: 22/21;
+    transition: opacity .1s;
+}
+
+#logo:hover {
+    opacity: .8;
+}
+
+#mini_logo {
+    display: none;
+}
+
+.list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.list_item.active a {
+    color: var(--dark);
+}
+
+.list_item a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Aeonik";
+    font-size: 1.125rem;
+    letter-spacing: -0.0225rem;
+    color: var(--dark_50);
+    text-decoration: none;
+    transition: transform .2s ease;
+}
+
+.list_item a:hover {
+    transform: scale(1.15);
+}
+
+#register_link {
+    display: none;
+}
+
+.register_button a:hover {
+    transform: unset;
+}
+
+.register_button a, #register_link a {
+    list-style: none;
+    display: flex;
+    height: 2.5rem;
+    padding: 0rem 1.125rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    font-weight: 115;
+    border-radius: 0.3125rem;
+    border: 1.5px solid var(--dark);
+    color: var(--dark);
+    transition: background-color .1s, color .1s;
+    line-height: 140%;
+    font-size: 1rem;
+}
+
+.register_button a:hover {
+    color: var(--light);
+    background-color: var(--dark);
+}
+
+.register_button.active a {
+    color: var(--light);
+    background-color: var(--dark);
+}
+
+.burger {
+    display: none;
+    flex-flow: column nowrap;
+    gap: 4px;
+    z-index: 3;
+    cursor: pointer;
+    transition: opacity .1s ease-in-out;
+}
+
+.burger:hover {
+    opacity: .8;
+}
+
+.burger:active {
+    opacity: .6;
+}
+
+.burger div {
+    width: 1.75rem;
+    height: 3px;
+    background: var(--dark);
+}
+
+.overlay {
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    background: rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+@media (max-width: 1057px) {
+    #nav_container {
+        backdrop-filter: unset;
+        background-color: var(--light);
+    }
+
+    .list {
+        z-index: 3;
+        position: fixed;
+        top: 0;
+        left: -50%;
+        height: 100%;
+        width: 50%;
+        flex-flow: column nowrap;
+        background-color: var(--light);
+        transition: left 0.3s ease;
+        border-right: 1.5px solid var(--dark);
+    }
+    
+    .register_button {
+        display: none;
+    }
+
+
+    #register_link {
+        display: unset;
+    }
+
+    #mini_logo {
+        display: unset;
+    }
+
+    .overlay.active{
+        pointer-events: all;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        transition: opacity 0.3s ease;
+    }
+
+    .list_item a {
+        font-size: 1.2rem;
+    }
+
+    #nav[data-toggled=true] .list{
+        left: 0;
+        transition: left 0.3s ease;
+    }
+    
+    .burger {
+        display: flex;
+    }
+}
