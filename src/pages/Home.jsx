@@ -1,9 +1,11 @@
 import styles from "@css/home.module.css";
+import HeroSketch from "@p5/HeroSketch";
 
 const Home = () => {
     return (
         <>
             <section id={styles.hero_section}>
+                <HeroSketch />
                 <div id={styles.hero_container}>
                     <div id={styles.hero_header}>
                         <h1>BearHacks 2025</h1>

@@ -5,6 +5,7 @@
     align-items: center;
     width: 100%;
     height: calc((100vh) - 8rem);
+    position: relative;
 }
 
 #hero_container {
@@ -66,4 +67,12 @@
 #hero_container a:hover {
     background-color: var(--dark);
     color: var(--light);
+}
+
+#hero_canvas_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
