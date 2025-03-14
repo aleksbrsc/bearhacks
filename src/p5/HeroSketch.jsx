@@ -2,6 +2,7 @@ import { useRef, useEffect } from "react";
 import { Boid } from "@p5/boid";
 import p5 from "p5";
 import styles from "@css/home.module.css";
+import bearbee from "@assets/images/bearbee.png";
 
 function HeroSketch() {
     const sketchRef = useRef();
@@ -10,12 +11,15 @@ function HeroSketch() {
     useEffect(() => {
         const sketch = (p) => {
             let boids = [];
-
+            let beeImage;
             p.setup = () => {
                 p.createCanvas(sketchRef.current.offsetWidth, sketchRef.current.offsetHeight);
                 for (let i=0;i<50;i++){
                     boids.push(new Boid(p, sketchRef.current.offsetWidth, sketchRef.current.offsetHeight));
                 }
+
+                beeImage = p.loadImage(bearbee);
+                // beeImage.resize(10, 0);
             };
 
             p.draw = () => {
@@ -23,7 +27,7 @@ function HeroSketch() {
                 for (let b of boids){
                     b.flock(boids);
                     b.update();
-                    b.show();
+                    b.show(beeImage);
                 }
             };
 

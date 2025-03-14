@@ -17,10 +17,10 @@ export class Boid {
         this.velocity.setMag(this.p.random(2, 4));
         this.acceleration = this.p.createVector();
         this.maxForce = 0.5;
-        this.maxSpeed = 6;
+        this.maxSpeed = 4;
         this.minSpeed = 1.2;
         this.perceptionRadius = 40;
-        this.theta = Math.PI/4;
+        this.theta = Math.PI/6;
         // this.theta = 2*Math.PI/9;
     }
 
@@ -57,17 +57,17 @@ export class Boid {
             this.velocity.y += turnFactor;
         }
 
-        if (this.position.x < 0){
-            this.position.x = width;
-        } else if (this.position.x > width){
-            this.position.x = 0;
-        }
+        // if (this.position.x < 0){
+        //     this.position.x = width;
+        // } else if (this.position.x > width){
+        //     this.position.x = 0;
+        // }
 
-        if (this.position.y < 0){
-            this.position.y = height;
-        } else if (this.position.y > height){
-            this.position.y = 0;
-        }
+        // if (this.position.y < 0){
+        //     this.position.y = height;
+        // } else if (this.position.y > height){
+        //     this.position.y = 0;
+        // }
     }
   
     align(boids) {
@@ -122,7 +122,7 @@ export class Boid {
             }
         }
 
-        let avoidFactor = 0.05;
+        let avoidFactor = 0.075;
         steering.mult(avoidFactor);
         return steering;
     }
@@ -141,7 +141,7 @@ export class Boid {
         if (neighbours > 0){
             steering.div(neighbours);
             steering.sub(this.position);
-            let cohesionFactor = 0.005;
+            let cohesionFactor = 0.0075;
             steering.mult(cohesionFactor);
         }
 
@@ -152,13 +152,13 @@ export class Boid {
       let alignment = this.align(boids);
       let cohesion = this.cohesion(boids);
       let separation = this.separation(boids);
-      let avoid = this.avoid(this.p.createVector(this.p.mouseX, this.p.mouseY));
+    //   let avoid = this.avoid(this.p.createVector(this.p.mouseX, this.p.mouseY));
     //   let seek = this.seek(this.p.createVector(this.p.mouseX, this.p.mouseY));
 
       this.acceleration.add(alignment);
       this.acceleration.add(cohesion);
       this.acceleration.add(separation);
-      this.acceleration.add(avoid);
+    //   this.acceleration.add(avoid);
     //   this.acceleration.add(seek);
     }
   
@@ -173,21 +173,23 @@ export class Boid {
         this.acceleration.mult(0);
     }
   
-    show() {
+    show(img) {
         this.p.push();
         // this.p.strokeWeight(6);
-        this.p.stroke(0);
-        this.p.fill(0);
-        let size = 5;
+        // this.p.stroke(0);
+        // this.p.fill(0);
+        // let size = 5;
         this.p.translate(this.position.x, this.position.y);
-        this.p.rotate(this.velocity.heading() + (Math.PI/2));
-        this.p.beginShape();
-        this.p.vertex(0, -size);
-        this.p.vertex(-size, size*2);
-        this.p.vertex(size, size*2);
-        this.p.endShape(this.p.CLOSE);
+        this.p.rotate(this.velocity.heading() - (Math.PI/2));
+        // this.p.beginShape();
+        // this.p.vertex(0, -size);
+        // this.p.vertex(-size, size*2);
+        // this.p.vertex(size, size*2);
+        // this.p.endShape(this.p.CLOSE);
         // this.p.point(this.position.x, this.position.y);
-        this.p.pop()
+        // img.resize(25, 0);
+        this.p.image(img, 0-img.width/2, 0-img.height/2);
+        this.p.pop();
     }
   }
   
