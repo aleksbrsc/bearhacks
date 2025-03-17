@@ -10,7 +10,7 @@ function slope(p1, p2){
 }
 
 export class Boid {
-    constructor(p) {
+    constructor(p, target) {
         this.p = p
         this.position = this.p.createVector(this.p.random(this.p.width), this.p.random(this.p.height));
         this.velocity = p5.Vector.random2D();
@@ -19,8 +19,13 @@ export class Boid {
         this.maxForce = 0.5;
         this.maxSpeed = 4;
         this.minSpeed = 1.2;
-        this.perceptionRadius = 40;
+        this.perceptionRadius = 35/2+30;
         this.theta = Math.PI/6;
+        this.alignFactor = 0.075
+        this.cohesionFactor = 0.00075
+        this.separationFactor = 0.05
+        this.seekFactor = 0.5
+        this.target = target
         // this.theta = 2*Math.PI/9;
     }
 
@@ -56,18 +61,6 @@ export class Boid {
         } else if (this.position.y < margin) {
             this.velocity.y += turnFactor;
         }
-
-        // if (this.position.x < 0){
-        //     this.position.x = width;
-        // } else if (this.position.x > width){
-        //     this.position.x = 0;
-        // }
-
-        // if (this.position.y < 0){
-        //     this.position.y = height;
-        // } else if (this.position.y > height){
-        //     this.position.y = 0;
-        // }
     }
   
     align(boids) {
@@ -81,11 +74,9 @@ export class Boid {
             }
         }
 
-        let alignFactor = 0.05;
         if (neighbours > 0){
             steering.div(neighbours);
             steering.sub(this.velocity);
-            steering.mult(alignFactor);
         }
 
         return steering;
@@ -94,19 +85,17 @@ export class Boid {
 
     avoid(position){
         let steering = this.p.createVector(0, 0);
-        if (this.perceived(position, 75)){
+        if (p5.Vector.dist(position, this.position) < 75){
             steering.add(p5.Vector.sub(this.position, position));
         }
 
-        let avoidFactor = 5;
-        steering.mult(avoidFactor);
         return steering;
     }
 
     seek(position){
         let desired = p5.Vector.sub(position, this.position);
         desired.normalize();
-        desired.mult(0.05);
+        // desired.mult(0.05);
 
         let steering = p5.Vector.sub(desired, this.velocity);
 
@@ -117,13 +106,11 @@ export class Boid {
         let steering = this.p.createVector(0, 0);
 
         for (let b of boids){
-            if (b != this && this.perceived(b.position, 20)){
+            if (b != this && p5.Vector.dist(this.position, b.position) < 30){
                 steering.add(p5.Vector.sub(this.position, b.position));
             }
         }
 
-        let avoidFactor = 0.075;
-        steering.mult(avoidFactor);
         return steering;
     }
   
@@ -141,32 +128,45 @@ export class Boid {
         if (neighbours > 0){
             steering.div(neighbours);
             steering.sub(this.position);
-            let cohesionFactor = 0.0075;
-            steering.mult(cohesionFactor);
         }
 
         return steering;
     }
   
-    flock(boids) {
-      let alignment = this.align(boids);
-      let cohesion = this.cohesion(boids);
-      let separation = this.separation(boids);
-    //   let avoid = this.avoid(this.p.createVector(this.p.mouseX, this.p.mouseY));
-    //   let seek = this.seek(this.p.createVector(this.p.mouseX, this.p.mouseY));
+    flock(boids, hovered) {
+        let alignment = this.align(boids);
+        let cohesion = this.cohesion(boids);
+        let separation = this.separation(boids);
+        alignment.mult(this.alignFactor);
+        cohesion.mult(this.cohesionFactor);
+        separation.mult(this.separationFactor);
 
-      this.acceleration.add(alignment);
-      this.acceleration.add(cohesion);
-      this.acceleration.add(separation);
-    //   this.acceleration.add(avoid);
-    //   this.acceleration.add(seek);
+        if (hovered){
+            let rect = this.target.getBoundingClientRect();
+            let x = rect.x + rect.width/2;
+            let y = rect.y - 5.65*16 + rect.height/2;
+            let position = this.p.createVector(x, y)
+            let seek = this.seek(position);
+            let avoid = this.avoid(position);
+            avoid.mult(this.p.random(20, 25))
+            seek.mult(this.seekFactor);
+            this.acceleration.add(seek);
+            this.acceleration.add(avoid);
+            this.acceleration.add(separation)
+            return
+        }
+
+        this.acceleration.add(alignment);
+        this.acceleration.add(cohesion);
+        this.acceleration.add(separation);
     }
   
     update() {
         this.velocity.add(this.acceleration);
         this.edges();
         if (this.velocity.mag() < this.minSpeed){
-            this.velocity.mult(this.minSpeed);
+            // this.velocity.mult(this.minSpeed);
+            this.velocity.setMag(this.minSpeed);
         }
         this.velocity.limit(this.maxSpeed);
         this.position.add(this.velocity);
@@ -188,7 +188,7 @@ export class Boid {
         // this.p.endShape(this.p.CLOSE);
         // this.p.point(this.position.x, this.position.y);
         // img.resize(25, 0);
-        this.p.image(img, 0-img.width/2, 0-img.height/2);
+        this.p.image(img, -img.width/2, -img.height/2);
         this.p.pop();
     }
   }
