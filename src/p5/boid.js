@@ -23,7 +23,7 @@ export class Boid {
         this.theta = Math.PI/6;
         this.alignFactor = 0.075
         this.cohesionFactor = 0.00075
-        this.separationFactor = 0.05
+        this.separationFactor = 0.01
         this.seekFactor = 0.5
         this.target = target
         // this.theta = 2*Math.PI/9;
@@ -177,18 +177,18 @@ export class Boid {
         this.p.push();
         // this.p.strokeWeight(6);
         // this.p.stroke(0);
-        // this.p.fill(0);
-        // let size = 5;
+        this.p.fill(0);
+        let size = 5;
         this.p.translate(this.position.x, this.position.y);
-        this.p.rotate(this.velocity.heading() - (Math.PI/2));
-        // this.p.beginShape();
-        // this.p.vertex(0, -size);
-        // this.p.vertex(-size, size*2);
-        // this.p.vertex(size, size*2);
-        // this.p.endShape(this.p.CLOSE);
+        this.p.rotate(this.velocity.heading() + (Math.PI/2));
+        this.p.beginShape();
+        this.p.vertex(0, -size);
+        this.p.vertex(-size, size*2);
+        this.p.vertex(size, size*2);
+        this.p.endShape(this.p.CLOSE);
         // this.p.point(this.position.x, this.position.y);
         // img.resize(25, 0);
-        this.p.image(img, -img.width/2, -img.height/2);
+        // this.p.image(img, -img.width/2, -img.height/2);
         this.p.pop();
     }
   }

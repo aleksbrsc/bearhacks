@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import { Boid } from "@p5/boid";
 import p5 from "p5";
 import styles from "@css/home.module.css";
@@ -14,9 +14,8 @@ function HeroSketch({button}) {
     useEffect(() => {
         const sketch = (p) => {
             let boids = [];
+            let trails = [];
             let beeImage;
-            let x = button_rect.x + button_rect.width/2;
-            let y = button_rect.y - 5.65*16 + button_rect.height/2;
             p.setup = () => {
                 p.createCanvas(sketchRef.current.offsetWidth, sketchRef.current.offsetHeight);
                 beeImage = p.loadImage(bearbee);
@@ -27,15 +26,30 @@ function HeroSketch({button}) {
             };
 
             p.draw = () => {
+                p.frameRate(60);
                 p.background(250);
-        
+
+                p.push()
+                p.strokeWeight(6)
+                for (let t of trails){
+                    if (p.frameCount % 5 == 0){
+                        t.alpha -= 0.15;
+                    }
+                    p.stroke(`rgba(255, 255, 0, ${t.alpha})`);
+                    p.point(t.pos.x, t.pos.y);
+                }
+                p.pop();
+
+                trails = trails.filter(t => t.alpha > 0);
+
                 for (let b of boids){
                     b.flock(boids, hoveredRef.current);
                     b.update();
                     b.show(beeImage);
+                    if (p.frameCount % 15 == 0){
+                        trails.push({pos: p.createVector(b.position.x, b.position.y), alpha: 1});
+                    }
                 }
-                // p.strokeWeight(6);
-                // p.point(x, y);
             };
 
             // Handle resize
@@ -52,25 +66,6 @@ function HeroSketch({button}) {
         };
     }, []); // Empty array: only runs on mount
 
-    // useEffect(() => {
-    //     const resizeObserver = new ResizeObserver(() => {
-    //         if (p5InstanceRef.current && sketchRef.current) {
-    //             p5InstanceRef.current.resizeCanvas(
-    //                 sketchRef.current.offsetWidth,
-    //                 sketchRef.current.offsetHeight
-    //             );
-    //         }
-    //     });
-
-    //     if (sketchRef.current) {
-    //         resizeObserver.observe(sketchRef.current);
-    //     }
-
-    //     return () => {
-    //         resizeObserver.disconnect();
-    //     };
-    // }, []); // Empty array: only runs on mount
-
     useEffect(() => {
         function handleMouseEnter(){
             hoveredRef.current = true;
@@ -78,8 +73,6 @@ function HeroSketch({button}) {
         function handleMouseLeave(){
             hoveredRef.current = false;
         }
-
-        // const element = button;
 
         button.addEventListener('mouseenter', handleMouseEnter);
         button.addEventListener('mouseleave', handleMouseLeave);
