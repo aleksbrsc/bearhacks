@@ -3,6 +3,11 @@
   src: url("assets/fonts/Aeonik_VariableGX.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "DS-Digital";
+  src: url("assets/fonts/ds_digital/DS-DIGIB.TTF") format("truetype");
+}
+
 html,
 body {
   width: 100%;

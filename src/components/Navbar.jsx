@@ -3,6 +3,7 @@ import logo from '@assets/images/logos/icon.svg';
 import linkedin from "@assets/images/icons/linkedin.svg";
 import instagram from "@assets/images/icons/instagram.svg";
 import discord from "@assets/images/icons/discord.svg";
+import devpost from "@assets/images/icons/devpost.svg";
 import { toast } from 'sonner'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -19,6 +20,9 @@ function Navbar() {
                 <ul className={styles.list}>
                     <li>
                         <img id={styles.mini_logo} src={logo} alt="BearHacks logo" />
+                    </li>
+                    <li className={styles.list_item}>
+                        <a href="https://bearhacks2025.devpost.com/" target="_blank"><img src={devpost}/></a>
                     </li>
                     <li className={styles.list_item}>
                         <a href="https://www.linkedin.com/company/bearhacks/" target="_blank"><img src={linkedin}/></a>
