@@ -22,13 +22,13 @@ function Navbar() {
                         <img id={styles.mini_logo} src={logo} alt="BearHacks logo" />
                     </li>
                     <li className={styles.list_item}>
-                        <a href="https://bearhacks2025.devpost.com/" target="_blank"><img src={devpost}/></a>
-                    </li>
-                    <li className={styles.list_item}>
                         <a href="https://www.linkedin.com/company/bearhacks/" target="_blank"><img src={linkedin}/></a>
                     </li>
                     <li className={styles.list_item}>
                         <a href="https://www.instagram.com/bearhacks/" target="_blank"><img src={instagram}/></a>
+                    </li>
+                    <li className={styles.list_item}>
+                        <a href="https://bearhacks2025.devpost.com/" target="_blank"><img src={devpost}/></a>
                     </li>
                     <li className={styles.list_item}>
                         <a href="https://discord.gg/g4d9A5R9Jc" target="_blank"><img src={discord}/></a>

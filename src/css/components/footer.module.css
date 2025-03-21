@@ -20,7 +20,7 @@
     padding: 2rem;
     width: clamp(var(--min_width), 100%, var(--max_width));
 
-    border: 1px solid black;
+    border: 1.5px solid black;
     border-bottom: none;
     border-radius: 8px 8px 0 0;
 }
@@ -43,6 +43,13 @@
 
     list-style-type: none;
     list-style: none;
+}
+
+.social_item a img {
+    transition: scale .2s ease;
+}
+.social_item a:hover img{
+    scale: 1.15;
 }
 
 @media screen and (max-width: 933px){

@@ -16,6 +16,9 @@ import balsamiq from "@assets/images/sponsor_logos/balsamiq_logo.svg";
 import typst from "@assets/images/sponsor_logos/typst_logo.svg";
 import xyz from "@assets/images/sponsor_logos/xyz_logo.svg";
 
+import faq_header from "@assets/images/faq_header.svg";
+import random_honeycomb from "@assets/images/random_honeycomb.svg";
+
 const milliInDay = 1000*60*60*24;
 const milliInHour = 1000*60*60;
 const milliInMinute = 1000*60;
@@ -95,6 +98,23 @@ const Countdown = () => {
     );
 }
 
+const FAQ = ({question, answer}) => {
+    const [toggled,  setToggled] = useState(false);
+
+    return (
+        <div className={styles.faq}>
+            <div className={styles.question_container}>
+                <h3 className={styles.question}>{question}</h3>
+                <div className={styles.faq_toggle} onClick={() => setToggled(!toggled)} data-toggled={toggled}>
+                    <div className={styles.horizontal}></div>
+                    <div className={styles.vertical}></div>
+                </div>
+            </div>
+            <p className={`${styles.answer} ${toggled ? styles.toggled: ''}`}>{answer}</p>
+        </div>
+    );
+}
+
 const Home = () => {
     const buttonRef = useRef();
     const [buttonLoaded, setButtonLoaded] = useState(false);
@@ -113,7 +133,7 @@ const Home = () => {
                         <h1>BearHacks 2025</h1>
                         <p>Sheridan’s first hybrid hackathon — <strong>March 28-30 @ HMC campus</strong></p>
                     </div>
-                    <a href="https://bearhacks2025.devpost.com" target="_blank" ref={buttonRef}>Apply Now</a>
+                    <a href="https://forms.gle/BaQ8qmwdyswubvnf6" target="_blank" ref={buttonRef}>Apply Now</a>
                 </div>
             </section>
             <section id={styles.countdown_section}>
@@ -124,6 +144,36 @@ const Home = () => {
                             <Countdown />
                         </div>
                     </div>
+                </div>
+            </section>
+            <section id={styles.breakdown_section}>
+                <h1>WINNER BREAKDOWN</h1>
+                <div id={styles.podium_container}>
+                    <div className={styles.podium}>
+                        <div className={styles.podium_content}>
+                            <h3>$$$</h3>
+                            <p></p>
+                        </div>
+                        <img src={random_honeycomb} alt="" />
+                        <div className={styles.placing}><h2>01</h2></div>
+                    </div>
+                    <div className={styles.podium}>
+                        <div className={styles.podium_content}>
+                            <h3>$$$</h3>
+                            <p></p>
+                        </div>
+                        <img src={random_honeycomb} alt="" />
+                        <div className={styles.placing}><h2>02</h2></div>
+                    </div>
+                    <div className={styles.podium}>
+                        <div className={styles.podium_content}>
+                            <h3>$$$</h3>
+                            <p></p>
+                        </div>
+                        <img src={random_honeycomb} alt="" />
+                        <div className={styles.placing}><h2>03</h2></div>
+                    </div>
+                    
                 </div>
             </section>
             <section id={styles.sponsor_section}>
@@ -141,6 +191,28 @@ const Home = () => {
                         <Link to="https://typst.app/" target="_blank"><img src={typst} alt="" /></Link>
                         <Link to="https://gen.xyz/" target="_blank"><img src={xyz} alt="" /></Link>
                         {/* <Link to="https://www.thessu.ca/" target="_blank"><img src={xyz} alt="" /></Link> */}
+                    </div>
+                </div>
+            </section>
+            <section id={styles.faq_section}>
+                <div id={styles.faq_container}>
+                    <img src={faq_header} alt="FAQ | BearHacks" />
+                    <h1>FREQUENTLY ASKED QUESTIONS</h1>
+                    <div id={styles.faq_list_container}>
+                        <ul className={styles.faq_list}>
+                            <li><FAQ question={'When is BearHacks happening?'} answer={'The registration starts at 5 pm on March 28th for in-person participants. We kindly ask you to be there by 7:30!'}/></li>
+                            <li><FAQ question={'Where are you located?'} answer={'HMC campus, 1st, 3rd, and 5th floors of the C building. It\'s the one closer to the Cineplex!'}/></li>
+                            <li><FAQ question={'Will there be food?'} answer={'Yes! We will have some meals and snacks, but we encourage you to bring some with you as well.'}/></li>
+                            <li><FAQ question={'What should I bring?'} answer={'Bring your laptop, charger, any hardware you plan to use, and a willingness to learn and collaborate!'}/></li>
+                            <li><FAQ question={'What is a hackathon?'} answer={'A hackathon is an event where people engage in rapid and collaborative engineering over a relatively short period of time, such as 24 or 48 hours.'}/></li>
+                        </ul>
+                        <ul className={styles.faq_list}>
+                            <li><FAQ question={'Do I need to know how to code?'} answer={'It\'s completely fine if you\'ve never coded before! BearHacks accepts students of all coding skill levels. Learn how to code, design or even play golf through our workshops or ask a mentor for help!'}/></li>
+                            <li><FAQ question={'What can I make?'} answer={'Your project can be software or hardware, and will be considered for the win as long as it aligns with the theme. The theme will be announced during the opening ceremony.'}/></li>
+                            <li><FAQ question={'How will our submissions be judged?'} answer={'The judging will happen fully online. By 10 am on Sunday you will need to submit your project on Devpost (a platform for hackathon submissions). The submission should include the description of your project and a recorded demo. Make sure your demo is good - judges will pay close attention to it!'}/></li>
+                            <li><FAQ question={'Do I need to come in person to for the workshops?'} answer={'The workshops will be held in person, with live streaming online. You can join by getting the link in our discord server!'}/></li>
+                            <li><FAQ question={'Can anyone who is not from Sheridan College come?'} answer={'Unfortunately, all non-Sheridan students can only join online.'}/></li>
+                        </ul>
                     </div>
                 </div>
             </section>
