@@ -77,6 +77,132 @@
     height: 100%;
 }
 
+#countdown_section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-inline: var(--inline_padding);
+}
+
+#countdown_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    width: clamp(var(--min_width), 100%, var(--max_width));
+}
+
+.tooltip {
+    position: absolute;
+    /* padding: 10px; */
+    /* border: 1px solid black; */
+    background: white;
+    display: flex;
+    flex-flow: column nowrap;
+    box-sizing: border-box;
+    max-width: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.tooltip.active {
+    max-width: 18rem !important;
+}
+
+.tooltip h3{
+    background: var(--dark);
+    color: white;
+    margin: 0;
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.tooltip p {
+    text-align: center;
+}
+
+#mentors_tooltip {
+    top: 0;
+    left: 0;
+}
+
+#hybrid_tooltip {
+    top: 15%;
+    left: 16%;
+}
+
+#support_tooltip {
+    top: -3%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#creative_tooltip {
+    top: 3%;
+    right: 18%;
+}
+
+#team_tooltip {
+    top: -5%;
+    right: 0;
+}
+
+#last_supper {
+    width: 100%;
+    position: relative;
+}
+
+#hero_background {
+    width: 100%;
+}
+
+#bear_praying {
+    width: 19%;
+
+    position: absolute;
+    left: 3%;
+    top: 14%;
+}
+
+#bear_sleeping {
+    width: 20%;
+
+    position: absolute;
+    left: 17.5%;
+    top: 19%;
+}
+
+#jesus_bear {
+    width: 27%;
+    position: absolute;
+
+    left: 48.5%;
+    top: 8%;
+    transform: translateX(-50%);
+}
+
+#bear_thinking {
+    width: 15%;
+    position: absolute;
+    left: 64.7%;
+    top: 21.5%;
+}
+
+#tetervak_bear {
+    width: 20%;
+    position: absolute;
+    right: 2%;
+    top: 12%;
+}
+
+#hero_foreground {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 2%;
+}
 #countdown {
     display: flex;
     flex-flow: row nowrap;
@@ -148,33 +274,66 @@
 .podium {
     background-color: #2e2e2e;
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .podium:nth-child(1){
     width: 80%;
-    img {
+    .podium_img_container {
         right: 0;
     }
 }
 
 .podium:nth-child(2){
     width: 60%;
-    img {
+    .podium_img_container {
         right: -1rem;
     }
 }
 
 .podium:nth-child(3){
     width: 40%;
-    img {
+    .podium_img_container {
         right: -8rem;
     }
 }
 
-.podium img {
+.podium_content {
+    color: white;
+    padding-inline: var(--inline_padding);
+}
+
+.podium_img_container {
     position: absolute;
     top: 0;
+    overflow: hidden;
+    height: 100%;
+}
+
+.placing_border {
+    display: grid;
+    place-items: center;
+    background: var(--dark);
+    position: absolute;
+    top: 0;
+    right: -2rem;
+    height: 100%;
+    aspect-ratio: 1/cos(30deg);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+
+}
+.placing {
+    display: grid;
+    place-items: center;   
+    height: 95%;
+    aspect-ratio: 1/cos(30deg);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    background: white;
+}
+
+.placing h2 {
+    margin: 0;
+    font-weight: 400;
 }
 
 #sponsor_section {
@@ -247,6 +406,14 @@
     gap: 1rem;
 }
 
+.question_container:hover {
+    cursor: pointer;
+}
+
+.question_container:hover .faq_toggle{
+    background: rgba(0, 0, 0, 0.1);
+}
+
 .question {
     font-weight: 400;
     margin-block: 1.2rem;
@@ -260,11 +427,6 @@
     min-height: 30px;
     position: relative;
     border-radius: 50%;
-}
-
-.faq_toggle:hover {
-    cursor: pointer;
-    background: rgba(0, 0, 0, 0.1);
 }
 
 .faq_toggle div {
@@ -293,7 +455,7 @@
     margin: 0;
     max-height: 0px;
     overflow: hidden;
-    transition: max-height .2s ease 0s;
+    transition: max-height .2s ease-in 0s;
 }
 
 .answer.toggled{
@@ -320,6 +482,7 @@
 #faq_container h1 {
     font-weight: 400;
     font-size: 2.5rem;
+    text-align: center;
 }
 
 #faq_list_container {
@@ -350,7 +513,7 @@
     width: 100%;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1232px) {
     #faq_list_container {
         flex-flow: column nowrap !important;
     }

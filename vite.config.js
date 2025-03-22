@@ -4,4 +4,5 @@ import jsconfigPaths from 'vite-jsconfig-paths'
 
 export default defineConfig({
   plugins: [react(), jsconfigPaths()],
+  assetsInclude: ['**/*.PNG']
 })

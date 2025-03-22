@@ -2,8 +2,16 @@ import styles from "@css/home.module.css";
 import HeroSketch from "@p5/HeroSketch";
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import hero_background from "@assets/images/hero_background.svg";
-import hero_foreground from "@assets/images/hero_foreground.svg";
+// import hero_background from "@assets/images/hero_background.svg";
+// import hero_foreground from "@assets/images/hero_foreground.svg";
+
+import bear_praying from "@assets/images/hero/bear_praying.png";
+import bear_sleeping from "@assets/images/hero/bear_sleeping.png";
+import jesus_bear from "@assets/images/hero/jesus_bear.png";
+import bear_thinking from "@assets/images/hero/bear_thinking.png";
+import tetervak_bear from "@assets/images/hero/tetervak_bear.png";
+import hero_background from "@assets/images/hero/background.png";
+import hero_foreground from "@assets/images/hero/updated_fg.png";
 
 import perplexity from "@assets/images/sponsor_logos/perplexity_logo.svg";
 import gdg from "@assets/images/sponsor_logos/gdg_logo.svg";
@@ -103,9 +111,9 @@ const FAQ = ({question, answer}) => {
 
     return (
         <div className={styles.faq}>
-            <div className={styles.question_container}>
+            <div className={styles.question_container} onClick={() => setToggled(!toggled)}>
                 <h3 className={styles.question}>{question}</h3>
-                <div className={styles.faq_toggle} onClick={() => setToggled(!toggled)} data-toggled={toggled}>
+                <div className={styles.faq_toggle} data-toggled={toggled}>
                     <div className={styles.horizontal}></div>
                     <div className={styles.vertical}></div>
                 </div>
@@ -118,6 +126,7 @@ const FAQ = ({question, answer}) => {
 const Home = () => {
     const buttonRef = useRef();
     const [buttonLoaded, setButtonLoaded] = useState(false);
+    const [bearHovered, setBearHovered] = useState(-1);
 
     useEffect(() => {
         if (buttonRef.current){
@@ -138,7 +147,35 @@ const Home = () => {
             </section>
             <section id={styles.countdown_section}>
                 <div id={styles.countdown_container}>
-                    {/* <img src="" alt="" /> */}
+                    <div id={styles.last_supper}>
+                        <img src={hero_background} alt="" id={styles.hero_background}/>
+                        <img src={bear_praying} alt="" id={styles.bear_praying} onMouseEnter={() => setBearHovered(0)} onMouseLeave={() => setBearHovered(-1)}/>
+                        <div id={styles.mentors_tooltip} className={`${styles.tooltip} ${bearHovered == 0 ? styles.active: ''}`}>
+                            <h3>MENTORS</h3>
+                            <p>Get access to developer and design mentors on the Discord on your 36-hour hacking journey.</p>
+                        </div>
+                        <img src={bear_sleeping} alt="" id={styles.bear_sleeping} onMouseEnter={() => setBearHovered(1)} onMouseLeave={() => setBearHovered(-1)}/>
+                        <div id={styles.hybrid_tooltip} className={`${styles.tooltip} ${bearHovered == 1 ? styles.active: ''}`}>
+                            <h3>HYBRID EVENT</h3>
+                            <p>Hack from the comfort of your own home, or in-person if you’ve been accepted (but no overnight stays!)</p>
+                        </div>
+                        <img src={jesus_bear} alt="" id={styles.jesus_bear} onMouseEnter={() => setBearHovered(2)} onMouseLeave={() => setBearHovered(-1)}/>
+                        <div id={styles.support_tooltip} className={`${styles.tooltip} ${bearHovered == 2 ? styles.active: ''}`}>
+                            <h3>SUPPORT TICKETS</h3>
+                            <p>Having trouble? Open a support ticket on the discord and our online support will be there to assist you!</p>
+                        </div>
+                        <img src={bear_thinking} alt="" id={styles.bear_thinking} onMouseEnter={() => setBearHovered(3)} onMouseLeave={() => setBearHovered(-1)}/>
+                        <div id={styles.creative_tooltip} className={`${styles.tooltip} ${bearHovered == 3 ? styles.active: ''}`}>
+                            <h3>GET CREATIVE</h3>
+                            <p>Got a new app idea? Check out our sponsors and prize tracks to win big while trying out new tech.</p>
+                        </div>
+                        <img src={tetervak_bear} alt="" id={styles.tetervak_bear} onMouseEnter={() => setBearHovered(4)} onMouseLeave={() => setBearHovered(-1)}/>
+                        <div id={styles.team_tooltip} className={`${styles.tooltip} ${bearHovered == 4 ? styles.active: ''}`}>
+                            <h3>FORM A TEAM</h3>
+                            <p>Feeling lost and need a team? Our networking booths and team-finding channels on the Discord can help!</p>
+                        </div>
+                        <img src={hero_foreground} alt="" id={styles.hero_foreground}/>
+                    </div>
                     <div>
                         <div>
                             <Countdown />
@@ -152,26 +189,44 @@ const Home = () => {
                     <div className={styles.podium}>
                         <div className={styles.podium_content}>
                             <h3>$$$</h3>
-                            <p></p>
+                            <p>1st place prizes</p>
                         </div>
-                        <img src={random_honeycomb} alt="" />
-                        <div className={styles.placing}><h2>01</h2></div>
+                        <div className={styles.podium_img_container}>
+                            <img src={random_honeycomb} alt="" />
+                        </div>
+                        <div className={styles.placing_border}>
+                            <div className={styles.placing}>
+                                <h2>01</h2>
+                            </div>
+                        </div>
                     </div>
                     <div className={styles.podium}>
                         <div className={styles.podium_content}>
                             <h3>$$$</h3>
-                            <p></p>
+                            <p>2nd place prizes</p>
                         </div>
-                        <img src={random_honeycomb} alt="" />
-                        <div className={styles.placing}><h2>02</h2></div>
+                        <div className={styles.podium_img_container}>
+                            <img src={random_honeycomb} alt="" />
+                        </div>
+                        <div className={styles.placing_border}>
+                            <div className={styles.placing}>
+                                <h2>02</h2>
+                            </div>
+                        </div>
                     </div>
                     <div className={styles.podium}>
                         <div className={styles.podium_content}>
                             <h3>$$$</h3>
-                            <p></p>
+                            <p>3rd place prizes</p>
                         </div>
-                        <img src={random_honeycomb} alt="" />
-                        <div className={styles.placing}><h2>03</h2></div>
+                        <div className={styles.podium_img_container}>
+                            <img src={random_honeycomb} alt="" />
+                        </div>
+                        <div className={styles.placing_border}>
+                            <div className={styles.placing}>
+                                <h2>03</h2>
+                            </div>
+                        </div>
                     </div>
                     
                 </div>
