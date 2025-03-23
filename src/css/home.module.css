@@ -83,6 +83,7 @@
     align-items: center;
     width: 100%;
     padding-inline: var(--inline_padding);
+    margin-bottom: 10rem;
 }
 
 #countdown_container {
@@ -95,8 +96,6 @@
 
 .tooltip {
     position: absolute;
-    /* padding: 10px; */
-    /* border: 1px solid black; */
     background: white;
     display: flex;
     flex-flow: column nowrap;
@@ -104,10 +103,17 @@
     max-width: 0;
     overflow: hidden;
     pointer-events: none;
+    opacity: 0;
+    margin-top: -2rem;
+    transition: opacity .3s ease-in, margin-top .2s ease-in;
 }
 
 .tooltip.active {
-    max-width: 18rem !important;
+    max-width: 18rem;
+    padding: 10px;
+    border: 1px solid black;
+    margin-top: 0;
+    opacity: 1;
 }
 
 .tooltip h3{
@@ -158,6 +164,11 @@
     width: 100%;
 }
 
+.bear_img {
+    width: 100%;
+    cursor: pointer;
+}
+
 #bear_praying {
     width: 19%;
 
@@ -168,7 +179,6 @@
 
 #bear_sleeping {
     width: 20%;
-
     position: absolute;
     left: 17.5%;
     top: 19%;
@@ -202,16 +212,42 @@
     width: 100%;
     left: 0;
     bottom: 2%;
+    pointer-events: none;
 }
+
+#clock {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    bottom: -10.5%;
+    pointer-events: none;
+}
+
+#honey_foreground {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 2%;
+    pointer-events: none;
+}
+
 #countdown {
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: 0;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
+    /* pointer-events: none; */
 }
 
 #countdown h1 {
     font-family: "DS-Digital";
+    font-size: clamp(4rem, 15vw, 12rem);
+    margin: 0;
+    color: #9B9389;
 }
 
 .time_scale {
@@ -219,11 +255,17 @@
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    gap: 0rem;
+    margin-inline: 0.5rem;
+    position: relative;
 }
 
 .time_scale p {
     margin: 0;
+    font-weight: 400;
+    font-size: clamp(0.8rem, 2vw, 2rem);
+    position: absolute;
+    bottom: -10%;
+    color: #9B9389;
 }
 .countdown_pair {
     display: flex;
@@ -231,18 +273,22 @@
     width: min-content;
 }
 
-.countdown_pair h1,
+.countdown_pair h1{
+    font-family: "DS-Digital";
+    /* width: 40px; */
+}
+
 .countdown_pair h1 span {
     font-family: "DS-Digital";
-    font-size: 5rem;
+
 }
 
 .countdown_pair h1 {
     position: relative;
     margin: 0;
-    width: 40px;
     text-align: right;
     align-self: flex-end;
+    color: #9B9389;
 }
 
 .countdown_pair h1 span {
@@ -250,9 +296,7 @@
     top: 0;
     left: 0;
     color: #9B9389;
-    opacity: 0.5;
-    width: 40px;
-    z-index: -1;
+    opacity: 0.1;
 }
 
 #breakdown_section {
@@ -477,6 +521,11 @@
     align-items: center;
     flex-flow: column nowrap;
     width: clamp(var(--min_width), 100%, var(--max_width));
+}
+
+#faq_container img {
+    width: 5rem;
+    margin-bottom: -1rem;
 }
 
 #faq_container h1 {

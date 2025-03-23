@@ -12,6 +12,8 @@ import bear_thinking from "@assets/images/hero/bear_thinking.png";
 import tetervak_bear from "@assets/images/hero/tetervak_bear.png";
 import hero_background from "@assets/images/hero/background.png";
 import hero_foreground from "@assets/images/hero/updated_fg.png";
+import honey_foreground from "@assets/images/hero/honey_foreground.png";
+import clock from "@assets/images/hero/clock.png";
 
 import perplexity from "@assets/images/sponsor_logos/perplexity_logo.svg";
 import gdg from "@assets/images/sponsor_logos/gdg_logo.svg";
@@ -23,8 +25,10 @@ import saily from "@assets/images/sponsor_logos/saily_logo.svg";
 import balsamiq from "@assets/images/sponsor_logos/balsamiq_logo.svg";
 import typst from "@assets/images/sponsor_logos/typst_logo.svg";
 import xyz from "@assets/images/sponsor_logos/xyz_logo.svg";
+import indesignn from "@assets/images/sponsor_logos/indesignn_logo.svg";
+import royalblue from "@assets/images/sponsor_logos/royalblue_logo.svg";
 
-import faq_header from "@assets/images/faq_header.svg";
+import faq_header from "@assets/images/faq_header.png";
 import random_honeycomb from "@assets/images/random_honeycomb.svg";
 
 const milliInDay = 1000*60*60*24;
@@ -135,8 +139,8 @@ const Home = () => {
     }, [buttonRef.current])
     return (
         <>
-                {/* {buttonLoaded && <HeroSketch button={buttonRef.current}/>} */}
             <section id={styles.hero_section}>
+                {buttonLoaded && <HeroSketch button={buttonRef.current}/>}
                 <div id={styles.hero_container}>
                     <div id={styles.hero_header}>
                         <h1>BearHacks 2025</h1>
@@ -149,37 +153,45 @@ const Home = () => {
                 <div id={styles.countdown_container}>
                     <div id={styles.last_supper}>
                         <img src={hero_background} alt="" id={styles.hero_background}/>
-                        <img src={bear_praying} alt="" id={styles.bear_praying} onMouseEnter={() => setBearHovered(0)} onMouseLeave={() => setBearHovered(-1)}/>
+                        <div id={styles.bear_praying} onMouseEnter={() => setBearHovered(0)} onMouseLeave={() => setBearHovered(-1)}>
+                            <img src={bear_praying} alt="" className={styles.bear_img}/>
+                        </div>
                         <div id={styles.mentors_tooltip} className={`${styles.tooltip} ${bearHovered == 0 ? styles.active: ''}`}>
                             <h3>MENTORS</h3>
                             <p>Get access to developer and design mentors on the Discord on your 36-hour hacking journey.</p>
                         </div>
-                        <img src={bear_sleeping} alt="" id={styles.bear_sleeping} onMouseEnter={() => setBearHovered(1)} onMouseLeave={() => setBearHovered(-1)}/>
+                        <div id={styles.bear_sleeping} onMouseEnter={() => setBearHovered(1)} onMouseLeave={() => setBearHovered(-1)}>
+                            <img src={bear_sleeping} alt="" className={styles.bear_img}/>
+                        </div>
                         <div id={styles.hybrid_tooltip} className={`${styles.tooltip} ${bearHovered == 1 ? styles.active: ''}`}>
                             <h3>HYBRID EVENT</h3>
                             <p>Hack from the comfort of your own home, or in-person if you’ve been accepted (but no overnight stays!)</p>
                         </div>
-                        <img src={jesus_bear} alt="" id={styles.jesus_bear} onMouseEnter={() => setBearHovered(2)} onMouseLeave={() => setBearHovered(-1)}/>
+                        <div id={styles.jesus_bear} onMouseEnter={() => setBearHovered(2)} onMouseLeave={() => setBearHovered(-1)}>
+                            <img src={jesus_bear} alt="" className={styles.bear_img}/>
+                        </div>
                         <div id={styles.support_tooltip} className={`${styles.tooltip} ${bearHovered == 2 ? styles.active: ''}`}>
                             <h3>SUPPORT TICKETS</h3>
                             <p>Having trouble? Open a support ticket on the discord and our online support will be there to assist you!</p>
                         </div>
-                        <img src={bear_thinking} alt="" id={styles.bear_thinking} onMouseEnter={() => setBearHovered(3)} onMouseLeave={() => setBearHovered(-1)}/>
+                        <div id={styles.bear_thinking} onMouseEnter={() => setBearHovered(3)} onMouseLeave={() => setBearHovered(-1)}>
+                            <img src={bear_thinking} alt=""className={styles.bear_img} />
+                        </div>
                         <div id={styles.creative_tooltip} className={`${styles.tooltip} ${bearHovered == 3 ? styles.active: ''}`}>
                             <h3>GET CREATIVE</h3>
                             <p>Got a new app idea? Check out our sponsors and prize tracks to win big while trying out new tech.</p>
                         </div>
-                        <img src={tetervak_bear} alt="" id={styles.tetervak_bear} onMouseEnter={() => setBearHovered(4)} onMouseLeave={() => setBearHovered(-1)}/>
+                        <div id={styles.tetervak_bear} onMouseEnter={() => setBearHovered(4)} onMouseLeave={() => setBearHovered(-1)}>
+                            <img src={tetervak_bear} alt="" className={styles.bear_img}/>
+                        </div>
                         <div id={styles.team_tooltip} className={`${styles.tooltip} ${bearHovered == 4 ? styles.active: ''}`}>
                             <h3>FORM A TEAM</h3>
                             <p>Feeling lost and need a team? Our networking booths and team-finding channels on the Discord can help!</p>
                         </div>
                         <img src={hero_foreground} alt="" id={styles.hero_foreground}/>
-                    </div>
-                    <div>
-                        <div>
-                            <Countdown />
-                        </div>
+                        <img src={clock} alt="" id={styles.clock}/>
+                        <img src={honey_foreground} alt="" id={styles.honey_foreground}/>
+                        <Countdown />
                     </div>
                 </div>
             </section>
@@ -245,13 +257,15 @@ const Home = () => {
                         <Link to="https://balsamiq.com/" target="_blank"><img src={balsamiq} alt="" /></Link>
                         <Link to="https://typst.app/" target="_blank"><img src={typst} alt="" /></Link>
                         <Link to="https://gen.xyz/" target="_blank"><img src={xyz} alt="" /></Link>
+                        <Link to="https://gen.xyz/" target="_blank"><img src={indesignn} alt="" /></Link>
+                        <Link to="https://gen.xyz/" target="_blank"><img src={royalblue} alt="" /></Link>
                         {/* <Link to="https://www.thessu.ca/" target="_blank"><img src={xyz} alt="" /></Link> */}
                     </div>
                 </div>
             </section>
             <section id={styles.faq_section}>
                 <div id={styles.faq_container}>
-                    <img src={faq_header} alt="FAQ | BearHacks" />
+                    <img src={faq_header} alt="FAQ | BearHacks"/>
                     <h1>FREQUENTLY ASKED QUESTIONS</h1>
                     <div id={styles.faq_list_container}>
                         <ul className={styles.faq_list}>
