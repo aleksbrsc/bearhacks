@@ -114,7 +114,7 @@ const FAQ = ({question, answer}) => {
     const [toggled,  setToggled] = useState(false);
 
     return (
-        <div className={styles.faq}>
+        <div className={styles.faq}> {/*onMouseEnter={() => setToggled(true)} onMouseLeave={() => setToggled(false)} */}
             <div className={styles.question_container} onClick={() => setToggled(!toggled)}>
                 <h3 className={styles.question}>{question}</h3>
                 <div className={styles.faq_toggle} data-toggled={toggled}>

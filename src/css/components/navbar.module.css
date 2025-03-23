@@ -147,7 +147,7 @@
 @media (max-width: 1057px) {
     #nav_container {
         backdrop-filter: unset;
-        background-color: var(--light);
+        /* background-color: var(--light); */
     }
 
     .list {
