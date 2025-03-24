@@ -5,11 +5,11 @@ import { useEffect, useRef, useState } from "react";
 // import hero_background from "@assets/images/hero_background.svg";
 // import hero_foreground from "@assets/images/hero_foreground.svg";
 
-import bear_praying from "@assets/images/hero/bear_praying.png";
-import bear_sleeping from "@assets/images/hero/bear_sleeping.png";
-import jesus_bear from "@assets/images/hero/jesus_bear.png";
-import bear_thinking from "@assets/images/hero/bear_thinking.png";
-import tetervak_bear from "@assets/images/hero/tetervak_bear.png";
+import bear_praying from "@assets/images/hero/bear_praying.PNG";
+import bear_sleeping from "@assets/images/hero/bear_sleeping.PNG";
+import jesus_bear from "@assets/images/hero/jesus_bear.PNG";
+import bear_thinking from "@assets/images/hero/bear_thinking.PNG";
+import tetervak_bear from "@assets/images/hero/tetervak_bear.PNG";
 import hero_background from "@assets/images/hero/background.png";
 import hero_foreground from "@assets/images/hero/updated_fg.png";
 import honey_foreground from "@assets/images/hero/honey_foreground.png";
