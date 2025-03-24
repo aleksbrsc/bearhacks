@@ -3,6 +3,7 @@ import { Boid } from "@p5/boid";
 import p5 from "p5";
 import styles from "@css/home.module.css";
 import bearbee from "@assets/images/bearbee.png";
+import bearbee_flapped from "@assets/images/bearbee_flapped.png";
 
 function HeroSketch({button}) {
     const sketchRef = useRef();
@@ -15,11 +16,11 @@ function HeroSketch({button}) {
         const sketch = (p) => {
             let boids = [];
             let trails = [];
-            let beeImage;
+            let beeFrames = [];
             p.setup = () => {
                 p.createCanvas(sketchRef.current.offsetWidth, sketchRef.current.offsetHeight);
-                beeImage = p.loadImage(bearbee);
-
+                beeFrames.push(p.loadImage(bearbee), p.loadImage(bearbee_flapped));
+                // console.log(beeFrames)
                 for (let i=0;i<boidCount;i++){
                     boids.push(new Boid(p, button))
                 }
@@ -45,7 +46,7 @@ function HeroSketch({button}) {
                 for (let b of boids){
                     b.flock(boids, hoveredRef.current);
                     b.update();
-                    b.show(beeImage);
+                    b.show(beeFrames);
                     if (p.frameCount % 15 == 0){
                         trails.push({pos: p.createVector(b.position.x, b.position.y), alpha: 1});
                     }

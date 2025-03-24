@@ -198,11 +198,7 @@ const Home = () => {
             <section id={styles.breakdown_section}>
                 <h1>WINNER BREAKDOWN</h1>
                 <div id={styles.podium_container}>
-                    <div className={styles.podium}>
-                        <div className={styles.podium_content}>
-                            <h3>$$$</h3>
-                            <p>1st place prizes</p>
-                        </div>
+                    <div className={styles.podium} id={styles.podium1}>
                         <div className={styles.podium_img_container}>
                             <img src={random_honeycomb} alt="" />
                         </div>
@@ -212,11 +208,17 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div className={styles.podium}>
-                        <div className={styles.podium_content}>
-                            <h3>$$$</h3>
-                            <p>2nd place prizes</p>
-                        </div>
+                    <ul className={styles.podium_prize_list}>
+                        <h2>Team Receives</h2>
+                        <li>$170 Perplexity Supply gift card</li>
+                        <li>Scotiabank Senior Manager coffee chat</li>
+                        <h2>Each Member Receives</h2>
+                        <li>1-on-1 with a Scotiabank Senior Principal Architect (AI/ML)</li>
+                        <li>Scotiabank recruitment coffee chat</li>
+                        <li>1-year of NordVPN, NordPass, Incogni, and Saily (1GB of free data for international travel)</li>
+                        <li>Special bear trophy/medal</li>
+                    </ul>
+                    <div className={styles.podium} id={styles.podium2}>
                         <div className={styles.podium_img_container}>
                             <img src={random_honeycomb} alt="" />
                         </div>
@@ -226,11 +228,16 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div className={styles.podium}>
-                        <div className={styles.podium_content}>
-                            <h3>$$$</h3>
-                            <p>3rd place prizes</p>
-                        </div>
+                    <ul className={styles.podium_prize_list}>
+                        <h2>Team Receives</h2>
+                        <li>$170 Perplexity Supply gift card</li>
+                        <li>Scotiabank Senior Manager coffee chat</li>
+                        <h2>Each Member Receives</h2>
+                        <li>Scotiabank recruitment coffee chat</li>
+                        <li>1-year of NordVPN, NordPass, Incogni, and Saily (1GB of free data for international travel)</li>
+                        <li>Bear trophy/medal</li>
+                    </ul>
+                    <div className={styles.podium} id={styles.podium3}>
                         <div className={styles.podium_img_container}>
                             <img src={random_honeycomb} alt="" />
                         </div>
@@ -240,7 +247,14 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    
+                    <ul className={styles.podium_prize_list}>
+                        <h2>Team Receives</h2>
+                        <li>$170 Perplexity Supply gift card</li>
+                        <li>Scotiabank Senior Manager coffee chat</li>
+                        <h2>Each Member Receives</h2>
+                        <li>Scotiabank recruitment coffee chat</li>
+                        <li>Special bear trophy/medal</li>
+                    </ul>
                 </div>
             </section>
             <section id={styles.sponsor_section}>

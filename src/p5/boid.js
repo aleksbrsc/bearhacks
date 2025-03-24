@@ -27,6 +27,8 @@ export class Boid {
         this.seekFactor = 0.5
         this.target = target
         // this.theta = 2*Math.PI/9;
+        this.last_frame = 0;
+        this.last_frame_count = this.p.frameCount;
     }
 
     perceived(position, radius){
@@ -173,22 +175,30 @@ export class Boid {
         this.acceleration.mult(0);
     }
   
-    show(img) {
+    show(frames) {
         this.p.push();
         // this.p.strokeWeight(6);
         // this.p.stroke(0);
-        this.p.fill(0);
-        let size = 5;
+        // this.p.fill(0);
+        // let size = 5;
         this.p.translate(this.position.x, this.position.y);
-        this.p.rotate(this.velocity.heading() + (Math.PI/2));
-        this.p.beginShape();
-        this.p.vertex(0, -size);
-        this.p.vertex(-size, size*2);
-        this.p.vertex(size, size*2);
-        this.p.endShape(this.p.CLOSE);
+        this.p.rotate(this.velocity.heading() - (Math.PI/2));
+        // this.p.beginShape();
+        // this.p.vertex(0, -size);
+        // this.p.vertex(-size, size*2);
+        // this.p.vertex(size, size*2);
+        // this.p.endShape(this.p.CLOSE);
         // this.p.point(this.position.x, this.position.y);
         // img.resize(25, 0);
-        // this.p.image(img, -img.width/2, -img.height/2);
+        let frameSpeed = 5 * 1/this.velocity.mag();
+        if (this.p.frameCount - this.last_frame_count >= frameSpeed){
+            this.last_frame_count = this.p.frameCount;
+            this.last_frame = (this.last_frame+1) % frames.length;
+        }
+        let img = frames[this.last_frame];
+        console.log(img);
+        console.log(frames);
+        this.p.image(img, -img.width/2, -img.height/2);
         this.p.pop();
     }
   }
