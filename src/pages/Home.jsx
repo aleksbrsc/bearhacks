@@ -15,6 +15,7 @@ import hero_foreground from "@assets/images/hero/updated_fg.png";
 import honey_foreground from "@assets/images/hero/honey_foreground.png";
 import clock from "@assets/images/hero/clock.png";
 
+
 import perplexity from "@assets/images/sponsor_logos/perplexity_logo.svg";
 import gdg from "@assets/images/sponsor_logos/gdg_logo.svg";
 import scotiabank from "@assets/images/sponsor_logos/scotiabank_logo.svg";
