@@ -196,8 +196,8 @@ export class Boid {
             this.last_frame = (this.last_frame+1) % frames.length;
         }
         let img = frames[this.last_frame];
-        console.log(img);
-        console.log(frames);
+        // console.log(img);
+        // console.log(frames);
         this.p.image(img, -img.width/2, -img.height/2);
         this.p.pop();
     }

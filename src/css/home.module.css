@@ -6,6 +6,7 @@
     width: 100%;
     height: calc((100vh) - 8rem);
     position: relative;
+    margin-bottom: 5rem;
 }
 
 #hero_container {
@@ -123,6 +124,8 @@
     text-align: center;
     font-weight: 400;
     letter-spacing: 2px;
+    /* text-wrap: nowrap;
+    white-space: none; */
 }
 
 .tooltip p {
@@ -255,7 +258,7 @@
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    margin-inline: 0.5rem;
+    margin-inline: 0.25rem;
     position: relative;
 }
 
@@ -308,6 +311,7 @@
 
 #breakdown_section h1 {
     font-weight: 400;
+    font-size: 2.5rem;
 }
 
 #podium_container {
@@ -416,6 +420,7 @@
 
 #sponsor_caption {
     font-weight: 400;
+    font-size: 2.5rem;
     letter-spacing: 2px;
     color: var(--light);
     background-color: #2e2e2e;
