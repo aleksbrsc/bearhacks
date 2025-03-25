@@ -272,8 +272,8 @@ const Home = () => {
                         <Link to="https://balsamiq.com/" target="_blank"><img src={balsamiq} alt="" /></Link>
                         <Link to="https://typst.app/" target="_blank"><img src={typst} alt="" /></Link>
                         <Link to="https://gen.xyz/" target="_blank"><img src={xyz} alt="" /></Link>
-                        <Link to="https://gen.xyz/" target="_blank"><img src={indesignn} alt="" /></Link>
-                        <Link to="https://gen.xyz/" target="_blank"><img src={royalblue} alt="" /></Link>
+                        <Link><img src={indesignn} alt="" /></Link>
+                        <Link><img src={royalblue} alt="" /></Link>
                         {/* <Link to="https://www.thessu.ca/" target="_blank"><img src={xyz} alt="" /></Link> */}
                     </div>
                 </div>

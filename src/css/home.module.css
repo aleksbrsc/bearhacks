@@ -96,25 +96,24 @@
 }
 
 .tooltip {
-    position: absolute;
-    background: white;
     display: flex;
     flex-flow: column nowrap;
     box-sizing: border-box;
-    max-width: 0;
-    overflow: hidden;
+
+    position: absolute;
+    background: white;
+    border: 1px solid black;
+    max-width: 18rem;
+    padding: 10px;
     pointer-events: none;
     opacity: 0;
-    margin-top: -2rem;
-    transition: opacity .3s ease-in, margin-top .2s ease-in;
+    transform: translateY(-2rem);
+    transition: opacity .3s ease-in, transform .2s ease-in;
 }
 
 .tooltip.active {
-    max-width: 18rem;
-    padding: 10px;
-    border: 1px solid black;
-    margin-top: 0;
     opacity: 1;
+    transform: translateY(0);
 }
 
 .tooltip h3{
@@ -144,8 +143,8 @@
 
 #support_tooltip {
     top: -3%;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 38.5%;
+    /* transform: translateX(-50%); */
 }
 
 #creative_tooltip {
