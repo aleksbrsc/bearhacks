@@ -169,6 +169,11 @@
 .bear_img {
     width: 100%;
     cursor: pointer;
+    transition: scale .2s ease-in;
+}
+
+.bear_img:hover {
+    scale: 1.1;
 }
 
 #bear_praying {
