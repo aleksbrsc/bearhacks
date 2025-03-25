@@ -1,9 +1,9 @@
 import { useRef, useEffect } from "react";
 import { Boid } from "@p5/boid";
 import p5 from "p5";
-import styles from "@css/home.module.css";
 import bearbee from "@assets/images/bearbee.png";
 import bearbee_flapped from "@assets/images/bearbee_flapped.png";
+import styles from "@css/components/sketch.module.css";
 
 function HeroSketch({button}) {
     const sketchRef = useRef();
