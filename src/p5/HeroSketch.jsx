@@ -22,7 +22,7 @@ function HeroSketch({button}) {
                 beeFrames.push(p.loadImage(bearbee), p.loadImage(bearbee_flapped));
                 // console.log(beeFrames)
                 for (let i=0;i<boidCount;i++){
-                    boids.push(new Boid(p, button))
+                    boids.push(new Boid(p, button_rect))
                 }
             };
 

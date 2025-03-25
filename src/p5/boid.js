@@ -144,7 +144,7 @@ export class Boid {
         separation.mult(this.separationFactor);
 
         if (hovered){
-            let rect = this.target.getBoundingClientRect();
+            let rect = this.target;
             let x = rect.x + rect.width/2;
             let y = rect.y - 5.65*16 + rect.height/2;
             let position = this.p.createVector(x, y)
