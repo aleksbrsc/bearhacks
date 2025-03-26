@@ -15,6 +15,12 @@ import hero_foreground from "@assets/images/hero/updated_fg.png";
 import honey_foreground from "@assets/images/hero/honey_foreground.png";
 import clock from "@assets/images/hero/clock.png";
 
+import first_place_cash_perks from "@assets/images/breakdown/first_place_cash_perks.png";
+import first_place_career from "@assets/images/breakdown/first_place_career.svg";
+import recognition from "@assets/images/breakdown/recognition.svg";
+import cash_icon from "@assets/images/breakdown/cash_icon.svg";
+import networking_icon from "@assets/images/breakdown/networking_icon.svg";
+import recognition_icon from "@assets/images/breakdown/logo_icon.svg";
 
 import perplexity from "@assets/images/sponsor_logos/perplexity_logo.svg";
 import gdg from "@assets/images/sponsor_logos/gdg_logo.svg";
@@ -28,9 +34,13 @@ import typst from "@assets/images/sponsor_logos/typst_logo.svg";
 import xyz from "@assets/images/sponsor_logos/xyz_logo.svg";
 import indesignn from "@assets/images/sponsor_logos/indesignn_logo.svg";
 import royalblue from "@assets/images/sponsor_logos/royalblue_logo.svg";
+import gongcha from "@assets/images/sponsor_logos/gong_cha_logo.png";
+import la_carnita from "@assets/images/sponsor_logos/la_carnita_logo.png";
+import vitos from "@assets/images/sponsor_logos/vitos_logo.png";
+import rabba_logo from "@assets/images/sponsor_logos/rabba_logo.png";
+import icp from "@assets/images/sponsor_logos/icp_logo.png";
 
 import faq_header from "@assets/images/faq_header.png";
-import random_honeycomb from "@assets/images/random_honeycomb.svg";
 
 const milliInDay = 1000*60*60*24;
 const milliInHour = 1000*60*60;
@@ -128,16 +138,41 @@ const FAQ = ({question, answer}) => {
     );
 }
 
+const PrizeCard = ({icon, title, description, img}) => {
+    return (
+        <div className={styles.prize_card}>
+            <div className={styles.prize_icon}>
+                <img src={icon} />
+            </div>
+            <h3 className={styles.prize_title}>{title}</h3>
+            <p className={styles.prize_description}>{description}</p>
+            <img src={img} className={styles.prize_img}/>
+        </div>
+    );
+}
+
 const Home = () => {
     const buttonRef = useRef();
     const [buttonLoaded, setButtonLoaded] = useState(false);
     const [bearHovered, setBearHovered] = useState(-1);
+    const [breakdownIndex, setBreakdownIndex] = useState(0);
+    const timeoutRef = useRef(null);
 
     useEffect(() => {
         if (buttonRef.current){
             setButtonLoaded(true);
         }
     }, [buttonRef.current])
+
+    useEffect(() => {
+        if (timeoutRef.current){
+            clearTimeout(timeoutRef.current)
+        }
+        timeoutRef.current = setTimeout(() => {
+            setBreakdownIndex((breakdownIndex+1)%3)
+        }, 8000)
+    }, [breakdownIndex])
+
     return (
         <>
             <section id={styles.hero_section}>
@@ -197,83 +232,57 @@ const Home = () => {
                 </div>
             </section>
             <section id={styles.breakdown_section}>
-                <h1>WINNER BREAKDOWN</h1>
-                <div id={styles.podium_container}>
-                    <div className={styles.podium} id={styles.podium1}>
-                        <div className={styles.podium_img_container}>
-                            <img src={random_honeycomb} alt="" />
+                <div id={styles.breakdown_container}>
+                    <h1>WINNER BREAKDOWN</h1>
+                    <div id={styles.breakdown_index_container}>
+                        <div className={`${styles.breakdown_index} ${breakdownIndex == 0 ? styles.active: ''}`} onClick={() => setBreakdownIndex(0)}>
+                            <h3>1st Place</h3>
                         </div>
-                        <div className={styles.placing_border}>
-                            <div className={styles.placing}>
-                                <h2>01</h2>
-                            </div>
+                        <div className={`${styles.breakdown_index} ${breakdownIndex == 1 ? styles.active: ''}`} onClick={() => setBreakdownIndex(1)}>
+                            <h3>2nd Place</h3>
                         </div>
-                    </div>
-                    <ul className={styles.podium_prize_list}>
-                        <h2>Team Receives</h2>
-                        <li>$170 Perplexity Supply gift card</li>
-                        <li>Scotiabank Senior Manager coffee chat</li>
-                        <h2>Each Member Receives</h2>
-                        <li>1-on-1 with a Scotiabank Senior Principal Architect (AI/ML)</li>
-                        <li>Scotiabank recruitment coffee chat</li>
-                        <li>1-year of NordVPN, NordPass, Incogni, and Saily (1GB of free data for international travel)</li>
-                        <li>Special bear trophy/medal</li>
-                    </ul>
-                    <div className={styles.podium} id={styles.podium2}>
-                        <div className={styles.podium_img_container}>
-                            <img src={random_honeycomb} alt="" />
-                        </div>
-                        <div className={styles.placing_border}>
-                            <div className={styles.placing}>
-                                <h2>02</h2>
-                            </div>
+                        <div className={`${styles.breakdown_index} ${breakdownIndex == 2 ? styles.active: ''}`} onClick={() => setBreakdownIndex(2)}>
+                            <h3>3rd Place</h3>
                         </div>
                     </div>
-                    <ul className={styles.podium_prize_list}>
-                        <h2>Team Receives</h2>
-                        <li>$170 Perplexity Supply gift card</li>
-                        <li>Scotiabank Senior Manager coffee chat</li>
-                        <h2>Each Member Receives</h2>
-                        <li>Scotiabank recruitment coffee chat</li>
-                        <li>1-year of NordVPN, NordPass, Incogni, and Saily (1GB of free data for international travel)</li>
-                        <li>Bear trophy/medal</li>
-                    </ul>
-                    <div className={styles.podium} id={styles.podium3}>
-                        <div className={styles.podium_img_container}>
-                            <img src={random_honeycomb} alt="" />
-                        </div>
-                        <div className={styles.placing_border}>
-                            <div className={styles.placing}>
-                                <h2>03</h2>
-                            </div>
-                        </div>
+                    <div className={`${styles.breakdown_content} ${breakdownIndex == 0 ? styles.active: ''}`}>
+                        <PrizeCard title={"Cash & Perks"} description={"$170 Perplexity supply gift card and 1 year of NordVPN, NordPass, Incogni, and Saily."} img={first_place_cash_perks} icon={cash_icon}/>
+                        <PrizeCard title={"Career & Networking"} description={"Scotiabank Senior Manager coffee chat, 1-on-1 with a Scotiabank Senior Principal AI/ML Architect, and a Scotiabank recruitment coffee chat."} img={first_place_career} icon={networking_icon}/>
+                        <PrizeCard title={"Recognition"} description={"Awarded a special BearHacks medal."} img={recognition} icon={recognition_icon}/>
                     </div>
-                    <ul className={styles.podium_prize_list}>
-                        <h2>Team Receives</h2>
-                        <li>$170 Perplexity Supply gift card</li>
-                        <li>Scotiabank Senior Manager coffee chat</li>
-                        <h2>Each Member Receives</h2>
-                        <li>Scotiabank recruitment coffee chat</li>
-                        <li>Special bear trophy/medal</li>
-                    </ul>
+                    <div className={`${styles.breakdown_content} ${breakdownIndex == 1 ? styles.active: ''}`}>
+                        <PrizeCard title={"Cash & Perks"} description={"$170 Perplexity supply gift card and 1 year of NordVPN, NordPass, Incogni, and Saily."} img={first_place_cash_perks} icon={cash_icon}/>
+                        <PrizeCard title={"Career & Networking"} description={"1-on-1 with a Scotiabank Senior Principal AI/ML Architect, and a Scotiabank recruitment coffee chat."} img={first_place_career} icon={networking_icon}/>
+                        <PrizeCard title={"Recognition"} description={"Awarded a special BearHacks medal."} img={recognition} icon={recognition_icon}/>
+                    </div>
+                    <div className={`${styles.breakdown_content} ${breakdownIndex == 2 ? styles.active: ''}`}>
+                        <PrizeCard title={"Cash & Perks"} description={"$170 Perplexity supply gift card."} img={perplexity} icon={cash_icon}/>
+                        <PrizeCard title={"Career & Networking"} description={"Scotiabank Senior Manager coffee chat and a Scotiabank recruitment coffee chat."} img={first_place_career} icon={networking_icon}/>
+                        <PrizeCard title={"Recognition"} description={"Awarded a special BearHacks medal."} img={recognition} icon={recognition_icon}/>
+                    </div>
                 </div>
             </section>
             <section id={styles.sponsor_section}>
                 <div id={styles.sponsor_container}>
                     <h1 id={styles.sponsor_caption}>OUR SPONSORS</h1>
                     <div id={styles.sponsor_logos}>
-                        <Link to="https://www.perplexity.ai/" target="_blank"><img src={perplexity} alt="" /></Link>
-                        <Link to="https://gdg.community.dev/gdg-on-campus-sheridan-college-trafalgar-road-campus-oakville-canada/" target="_blank"><img src={gdg} alt="" /></Link>
-                        <Link to="https://scotiabank.com/" target="_blank"><img src={scotiabank} alt="" /></Link>
+                        <Link to="https://www.perplexity.ai/" target="_blank" style={{maxWidth: "75%"}}><img src={perplexity} alt="" /></Link>
+                        <Link to="https://gdg.community.dev/gdg-on-campus-sheridan-college-trafalgar-road-campus-oakville-canada/" style={{width: "30rem"}} target="_blank"><img src={gdg} alt="" /></Link>
+                        <Link to="https://scotiabank.com/" target="_blank" style={{width: "clamp(min(20rem, 100%), 35vw, min(30rem, 100%))"}}><img src={scotiabank} alt="" /></Link>
+                        <Link to="https://internetcomputer.org/" target="_blank" style={{width: "clamp(min(15rem, 100%), 20vw, 25rem)"}}><img src={icp} alt="" /></Link>
+                        <Link style={{width: "clamp(min(20rem, 100%), 40vw, 40rem)"}}><img src={indesignn} alt="" /></Link>
+                        <Link><img src={royalblue} alt="" /></Link>
                         <Link to="https://incogni.com/" target="_blank"><img src={incogni} alt="" /></Link>
-                        <Link to="https://nordvpn.com/" target="_blank"><img src={nord_vpn} alt="" /></Link>
-                        <Link to="https://nordpass.com/" target="_blank"><img src={nord_pass} alt="" /></Link>
+                        <Link to="https://nordvpn.com/" target="_blank" style={{width: "clamp(7rem, 12vw, 20rem)"}}><img src={nord_vpn} alt="" /></Link>
+                        <Link to="https://nordpass.com/" target="_blank" style={{width: "clamp(7rem, 12vw, 20rem)"}}><img src={nord_pass} alt="" /></Link>
                         <Link to="https://saily.com/" target="_blank"><img src={saily} alt="" /></Link>
                         <Link to="https://balsamiq.com/" target="_blank"><img src={balsamiq} alt="" /></Link>
                         <Link to="https://typst.app/" target="_blank"><img src={typst} alt="" /></Link>
                         <Link to="https://gen.xyz/" target="_blank"><img src={xyz} alt="" /></Link>
-                        <Link><img src={indesignn} alt="" /></Link>
-                        <Link><img src={royalblue} alt="" /></Link>
+                        <Link to="https://gong-cha.ca/" target="_blank" style={{width: "clamp(7rem, 8vw, 20rem)"}}><img src={gongcha} alt="" /></Link>
+                        <Link to="https://rabba.com/" target="_blank" style={{width: "clamp(7rem, 10vw, 20rem)"}}><img src={rabba_logo} alt="" /></Link>
+                        <Link to="https://vitospizzawings.com/" target="_blank" style={{width: "clamp(7rem, 10vw, 20rem)"}}><img src={vitos} alt="" /></Link>
+                        <Link to="https://www.lacarnita.com/" target="_blank" style={{width: "clamp(7rem, 10vw, 20rem)"}}><img src={la_carnita} alt="" /></Link>
                         {/* <Link to="https://www.thessu.ca/" target="_blank"><img src={xyz} alt="" /></Link> */}
                     </div>
                 </div>
@@ -285,10 +294,10 @@ const Home = () => {
                     <div id={styles.faq_list_container}>
                         <ul className={styles.faq_list}>
                             <li><FAQ question={'When is BearHacks happening?'} answer={'The registration starts at 5 pm on March 28th for in-person participants. We kindly ask you to be there by 7:30!'}/></li>
-                            <li><FAQ question={'Where are you located?'} answer={'HMC campus, 1st, 3rd, and 5th floors of the C building. It\'s the one closer to the Cineplex!'}/></li>
+                            <li><FAQ question={'Where are you located?'} answer={'HMC campus, C Wing 5th floor. It\'s the one closer to the Cineplex!'}/></li>
                             <li><FAQ question={'Will there be food?'} answer={'Yes! We will have some meals and snacks, but we encourage you to bring some with you as well.'}/></li>
-                            <li><FAQ question={'What should I bring?'} answer={'Bring your laptop, charger, any hardware you plan to use, and a willingness to learn and collaborate!'}/></li>
-                            <li><FAQ question={'What is a hackathon?'} answer={'A hackathon is an event where people engage in rapid and collaborative engineering over a relatively short period of time, such as 24 or 48 hours.'}/></li>
+                            <li><FAQ question={'What should I bring?'} answer={'Bring your laptop, charger, extension cords, personal water bottles, and any hardware you plan to use.'}/></li>
+                            <li><FAQ question={'What is a hackathon?'} answer={'A hackathon is an event where people design and develop software projects in 36 hours.'}/></li>
                         </ul>
                         <ul className={styles.faq_list}>
                             <li><FAQ question={'Do I need to know how to code?'} answer={'It\'s completely fine if you\'ve never coded before! BearHacks accepts students of all coding skill levels. Learn how to code, design or even play golf through our workshops or ask a mentor for help!'}/></li>

@@ -34,6 +34,10 @@ a {
   transition: outline 0.05s!important;
 }
 
+h1, h2, h3, p {
+  user-select: none;
+}
+
 .toast div {
   font-weight: 113;
   font-style: normal;

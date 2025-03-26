@@ -76,7 +76,7 @@
     align-items: center;
     width: 100%;
     padding-inline: var(--inline_padding);
-    margin-bottom: 10rem;
+    margin-bottom: 4vw;
 }
 
 #countdown_container {
@@ -304,98 +304,152 @@
 
 #breakdown_section {
     display: flex;
-    flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    padding: var(--inline_padding);
 }
 
-#breakdown_section h1 {
+#breakdown_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    width: clamp(var(--min_width), 100%, var(--max_width));
+
+    position: relative;
+}
+
+#breakdown_container h1 {
     font-weight: 400;
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);    
     text-align: center;
 }
 
-#podium_container {
+#breakdown_index_container {
     display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 2rem;
+    flex-flow: row nowrap;
+    justify-content: stretch;
+    gap: 2px;
     width: 100%;
 }
 
-.podium {
-    background-color: #2e2e2e;
-    position: relative;
-    height: 7rem;
-    /* overflow: hidden; */
-}
-
-#podium1{
-    width: 80%;
-    .podium_img_container {
-        right: 0;
-    }
-}
-
-#podium2{
-    width: 60%;
-    .podium_img_container {
-        right: -1rem;
-    }
-}
-
-#podium3{
-    width: 40%;
-    .podium_img_container {
-        right: -8rem;
-    }
-}
-
-.podium_prize_list {
-    display: flex;
-    justify-content: start;
-    align-items: flex-start;
-    flex-flow: column nowrap;
-    width: clamp(var(--min_width), 100%, var(--max_width));
-    margin: 0;
-    padding-inline: var(--inline_padding);
-    align-self: center;
-    list-style-type: none;
-}
-
-.podium_img_container {
-    position: absolute;
-    top: 0;
-    overflow: hidden;
-    height: 100%;
-}
-
-.placing_border {
+.breakdown_index {
+    width: 100%;
     display: grid;
     place-items: center;
-    background: var(--dark);
+
+    border-radius: 8px 8px 0 0;
+    border: 1px solid #2e2e2e;
+    border-bottom: none;
+    box-sizing: border-box;
+    position: relative;
+
+    padding: 0.8rem clamp(1rem, 1vw, 2rem);
+    background: #2e2e2e;
+    color: white;
+
+    transition: background .3s ease-in, color .3s ease-in;
+}
+
+.breakdown_index::after {
     position: absolute;
-    top: -0.5px;
-    right: -2.5rem;
-    height: 100%;
-    aspect-ratio: 1/cos(30deg);
-    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    content: '';
+    width: 0;
+    height: 1px;
 
-}
-.placing {
-    display: grid;
-    place-items: center;   
-    height: 95%;
-    aspect-ratio: 1/cos(30deg);
-    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-    background: white;
+    bottom: 0;
+    left: 0;
+    background: #2e2e2e;
 }
 
-.placing h2 {
+.breakdown_index:hover {
+    cursor: pointer;
+}
+
+.breakdown_index h3 {
     margin: 0;
+    text-wrap: nowrap;
+    white-space: none;
+    font-size: clamp(0.8rem, 1.5vw, 1.17rem);
+}
+
+.breakdown_index.active {
+    background: var(--light);
+    color: #2e2e2e;
+}
+
+@keyframes grow {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.breakdown_index.active::after {
+    width: 100%;
+    animation: grow 8s linear forwards;
+}
+
+.prize_card {
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1;
+    max-width: 20rem;
+    min-width: 15rem;
+    min-height: 25rem;
+    position: relative;
+
+    border-radius: 8px;
+    border: 1px solid #2e2e2e;
+    padding: 1rem;
+
+    /* box-sizing: border-box; */
+}
+
+.prize_title {
     font-weight: 400;
 }
+
+.prize_icon {
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid #2e2e2e;
+    width: 3.5rem;
+
+    display: grid;
+    place-items: center;
+}
+
+.prize_icon img {
+    height: 1.2rem;
+}
+
+.prize_img {
+    position: absolute;
+    width: 90%;
+    bottom: 0;
+}
+
+.breakdown_content {
+    display: none;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    gap: 1rem;
+
+    width: 100%;
+    padding: 2rem;
+
+    border-radius: 0 0 8px 8px;
+    border: 1px solid #2e2e2e;
+}
+
+.breakdown_content.active {
+    display: flex;
+}
+
 
 #sponsor_section {
     margin-top: 2rem;
@@ -415,14 +469,13 @@
 
     border-radius: 8px;
     border: 1.5px solid var(--dark);
-    padding-top: 0;
 
     overflow: hidden;
 }
 
 #sponsor_caption {
     font-weight: 400;
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
     letter-spacing: 2px;
     color: var(--light);
     background-color: #2e2e2e;
@@ -440,15 +493,17 @@
     flex-flow: row wrap;
     gap: 1rem;
     padding: 1rem;
+    padding-top: 0;
+    width: 100%;
 }
 
 #sponsor_logos a{
-    max-width: 100%;
-    position: relative;
-    scale: 0.8;
+    /* position: relative; */
     display: flex;
     justify-content: center;
     align-items: center;
+    /* scale: 0.8; */
+    /* max-width: 80%; */
 }
 
 #sponsor_logos a img {
@@ -456,6 +511,7 @@
 }
 
 .faq {
+    --animation-duration: 0.15s;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -494,7 +550,7 @@
 .faq_toggle div {
     background: #F08700;
     border-radius: 2px;
-    transition: width .3s ease-in-out, height .3s ease-in-out;
+    transition: width var(--animation-duration) ease-in-out, height var(--animation-duration) ease-in-out;
 }
 
 .faq_toggle .vertical {
@@ -517,11 +573,13 @@
     margin: 0;
     max-height: 0px;
     overflow: hidden;
-    transition: max-height .3s ease-in-out;
+    transition: max-height var(--animation-duration) ease-out;
+
 }
 
 .answer.toggled{
     max-height: 20rem;
+    transition: max-height calc(var(--animation-duration) * 1.2) ease-in;
 }
 
 #faq_section {
@@ -548,7 +606,7 @@
 
 #faq_container h1 {
     font-weight: 400;
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
     text-align: center;
 }
 
