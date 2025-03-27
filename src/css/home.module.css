@@ -76,7 +76,6 @@
     align-items: center;
     width: 100%;
     padding-inline: var(--inline_padding);
-    margin-bottom: 4vw;
 }
 
 #countdown_container {
@@ -303,6 +302,7 @@
 }
 
 #breakdown_section {
+    margin-top: 7rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -340,7 +340,7 @@
     place-items: center;
 
     border-radius: 8px 8px 0 0;
-    border: 1px solid #2e2e2e;
+    border: 1.5px solid #2e2e2e;
     border-bottom: none;
     box-sizing: border-box;
     position: relative;
@@ -356,15 +356,16 @@
     position: absolute;
     content: '';
     width: 0;
-    height: 1px;
+    height: 2px;
 
     bottom: 0;
     left: 0;
-    background: #2e2e2e;
+    background: #EBA34A;
 }
 
 .breakdown_index:hover {
     cursor: pointer;
+    opacity: 0.9;
 }
 
 .breakdown_index h3 {
@@ -403,7 +404,7 @@
     position: relative;
 
     border-radius: 8px;
-    border: 1px solid #2e2e2e;
+    border: 1.5px solid #2e2e2e;
     padding: 1rem;
 
     /* box-sizing: border-box; */
@@ -416,7 +417,7 @@
 .prize_icon {
     padding: 5px 10px;
     border-radius: 4px;
-    border: 1px solid #2e2e2e;
+    border: 1.5px solid #2e2e2e;
     width: 3.5rem;
 
     display: grid;
@@ -443,7 +444,8 @@
     padding: 2rem;
 
     border-radius: 0 0 8px 8px;
-    border: 1px solid #2e2e2e;
+    border: 1.5px solid #2e2e2e;
+    border-top: none;
 }
 
 .breakdown_content.active {
@@ -452,7 +454,7 @@
 
 
 #sponsor_section {
-    margin-top: 2rem;
+    margin-top: 7rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -583,7 +585,7 @@
 }
 
 #faq_section {
-    margin-top: 2rem;
+    margin-top: 7rem;
     display: flex;
     justify-content: center;
     align-items: center;
