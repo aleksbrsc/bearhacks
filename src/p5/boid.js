@@ -10,7 +10,7 @@ function slope(p1, p2){
 }
 
 export class Boid {
-    constructor(p, target) {
+    constructor(p, target, radius) {
         this.p = p
         this.position = this.p.createVector(this.p.random(this.p.width), this.p.random(this.p.height));
         this.velocity = p5.Vector.random2D();
@@ -19,7 +19,8 @@ export class Boid {
         this.maxForce = 0.5;
         this.maxSpeed = 4;
         this.minSpeed = 1.2;
-        this.perceptionRadius = 35/2+30;
+        this.radius = radius
+        this.perceptionRadius = radius/2+30;
         this.theta = Math.PI/6;
         this.alignFactor = 0.075
         this.cohesionFactor = 0.00075
@@ -177,27 +178,14 @@ export class Boid {
   
     show(frames) {
         this.p.push();
-        // this.p.strokeWeight(6);
-        // this.p.stroke(0);
-        // this.p.fill(0);
-        // let size = 5;
         this.p.translate(this.position.x, this.position.y);
         this.p.rotate(this.velocity.heading() - (Math.PI/2));
-        // this.p.beginShape();
-        // this.p.vertex(0, -size);
-        // this.p.vertex(-size, size*2);
-        // this.p.vertex(size, size*2);
-        // this.p.endShape(this.p.CLOSE);
-        // this.p.point(this.position.x, this.position.y);
-        // img.resize(25, 0);
         let frameSpeed = 5 * 1/this.velocity.mag();
         if (this.p.frameCount - this.last_frame_count >= frameSpeed){
             this.last_frame_count = this.p.frameCount;
             this.last_frame = (this.last_frame+1) % frames.length;
         }
         let img = frames[this.last_frame];
-        // console.log(img);
-        // console.log(frames);
         this.p.image(img, -img.width/2, -img.height/2);
         this.p.pop();
     }

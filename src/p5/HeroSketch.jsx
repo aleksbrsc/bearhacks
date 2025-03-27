@@ -16,13 +16,30 @@ function HeroSketch({button}) {
         const sketch = (p) => {
             let boids = [];
             let trails = [];
+            let bee;
+            let bee_flapped;
             let beeFrames = [];
+            let smallBeeFrames = [];
+
+            p.preload = () => {
+                bee = p.loadImage(bearbee);
+                bee_flapped = p.loadImage(bearbee_flapped);
+            }
             p.setup = () => {
                 p.createCanvas(sketchRef.current.offsetWidth, sketchRef.current.offsetHeight);
-                beeFrames.push(p.loadImage(bearbee), p.loadImage(bearbee_flapped));
+                beeFrames.push(bee, bee_flapped);
+
+                let small_bee = bee.get();
+                small_bee.resize(28, 0)
+                let small_bee_flapped = bee_flapped.get();
+                small_bee_flapped.resize(28, 0)
+                smallBeeFrames.push(small_bee, small_bee_flapped)
+
+
+                let sizes = [35, 25];
                 // console.log(beeFrames)
                 for (let i=0;i<boidCount;i++){
-                    boids.push(new Boid(p, button_rect))
+                    boids.push(new Boid(p, button_rect, sizes[Math.floor(Math.random() * 2)]));
                 }
             };
 
@@ -46,7 +63,11 @@ function HeroSketch({button}) {
                 for (let b of boids){
                     b.flock(boids, hoveredRef.current);
                     b.update();
-                    b.show(beeFrames);
+                    let frames = smallBeeFrames;
+                    if (b.radius != 25){
+                        frames = beeFrames;
+                    }
+                    b.show(frames);
                     if (p.frameCount % 15 == 0){
                         trails.push({pos: p.createVector(b.position.x, b.position.y), alpha: 1});
                     }
