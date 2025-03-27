@@ -168,7 +168,7 @@
 }
 
 .bear_img:hover {
-    scale: 1.1;
+    scale: 1.05;
 }
 
 #bear_praying {
@@ -242,7 +242,6 @@
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
-    /* pointer-events: none; */
 }
 
 #countdown h1 {
@@ -252,13 +251,22 @@
     color: #9B9389;
 }
 
+@media screen and (max-width: 430px) {
+    #countdown h1 {
+        font-size: clamp(1.5rem, 13vw, 10rem);
+        /* color: red; */
+    }
+
+    .time_scale p {
+        font-size: clamp(0.4rem, 2vw, 1.5rem) !important;
+    }
+}
+
 .time_scale {
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    margin-inline: 0.25rem;
-    position: relative;
 }
 
 .time_scale p {
@@ -275,25 +283,14 @@
     width: min-content;
 }
 
-.countdown_pair h1{
-    font-family: "DS-Digital";
-    /* width: 40px; */
-}
-
-.countdown_pair h1 span {
-    font-family: "DS-Digital";
-
-}
-
 .countdown_pair h1 {
     position: relative;
     margin: 0;
-    text-align: right;
-    align-self: flex-end;
     color: #9B9389;
 }
 
 .countdown_pair h1 span {
+    font-family: "DS-Digital";
     position: absolute;
     top: 0;
     left: 0;
@@ -349,7 +346,7 @@
     background: #2e2e2e;
     color: white;
 
-    transition: background .3s ease-in, color .3s ease-in;
+    transition: background .3s ease-in, color .3s ease-in, opacity .2s ease;
 }
 
 .breakdown_index::after {

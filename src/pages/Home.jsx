@@ -248,17 +248,17 @@ const Home = () => {
                     <div className={`${styles.breakdown_content} ${breakdownIndex == 0 ? styles.active: ''}`}>
                         <PrizeCard title={"Cash & Perks"} description={"$170 Perplexity supply gift card and 1 year of NordVPN, NordPass, Incogni, and Saily."} img={first_place_cash_perks} icon={cash_icon}/>
                         <PrizeCard title={"Career & Networking"} description={"Scotiabank Senior Manager coffee chat, 1-on-1 with a Scotiabank Senior Principal AI/ML Architect, and a Scotiabank recruitment coffee chat."} img={first_place_career} icon={networking_icon}/>
-                        <PrizeCard title={"Recognition"} description={"Awarded a special BearHacks medal."} img={recognition} icon={recognition_icon}/>
+                        <PrizeCard title={"Recognition"} description={"Awarded a special BearHacks trophy."} img={recognition} icon={recognition_icon}/>
                     </div>
                     <div className={`${styles.breakdown_content} ${breakdownIndex == 1 ? styles.active: ''}`}>
                         <PrizeCard title={"Cash & Perks"} description={"$170 Perplexity supply gift card and 1 year of NordVPN, NordPass, Incogni, and Saily."} img={first_place_cash_perks} icon={cash_icon}/>
                         <PrizeCard title={"Career & Networking"} description={"1-on-1 with a Scotiabank Senior Principal AI/ML Architect, and a Scotiabank recruitment coffee chat."} img={first_place_career} icon={networking_icon}/>
-                        <PrizeCard title={"Recognition"} description={"Awarded a special BearHacks medal."} img={recognition} icon={recognition_icon}/>
+                        <PrizeCard title={"Recognition"} description={"Awarded a special BearHacks trophy."} img={recognition} icon={recognition_icon}/>
                     </div>
                     <div className={`${styles.breakdown_content} ${breakdownIndex == 2 ? styles.active: ''}`}>
                         <PrizeCard title={"Cash & Perks"} description={"$170 Perplexity supply gift card."} img={perplexity} icon={cash_icon}/>
                         <PrizeCard title={"Career & Networking"} description={"Scotiabank Senior Manager coffee chat and a Scotiabank recruitment coffee chat."} img={first_place_career} icon={networking_icon}/>
-                        <PrizeCard title={"Recognition"} description={"Awarded a special BearHacks medal."} img={recognition} icon={recognition_icon}/>
+                        <PrizeCard title={"Recognition"} description={"Awarded a special BearHacks trophy."} img={recognition} icon={recognition_icon}/>
                     </div>
                 </div>
             </section>
