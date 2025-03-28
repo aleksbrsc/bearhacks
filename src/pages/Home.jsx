@@ -293,8 +293,8 @@ const Home = () => {
                     <h1>FREQUENTLY ASKED QUESTIONS</h1>
                     <div id={styles.faq_list_container}>
                         <ul className={styles.faq_list}>
-                            <li><FAQ question={'When is BearHacks happening?'} answer={'The registration starts at 5 pm on March 28th for in-person participants. We kindly ask you to be there by 7:30!'}/></li>
-                            <li><FAQ question={'Where are you located?'} answer={'HMC campus, C Wing 5th floor. It\'s the one closer to the Cineplex!'}/></li>
+                            <li><FAQ question={'When is BearHacks happening?'} answer={'The registration is from 5:00 - 7:00PM on March 28th for in-person participants. Please arrive as early as possible to ensure you\'re checked in before Opening Ceremony at 7:00PM and the Scotiabank fireside chat right after.'}/></li>
+                            <li><FAQ question={'Where are you located?'} answer={'Sheridan HMC campus, C Wing 5th floor. It\'s the one closer to the Cineplex!'}/></li>
                             <li><FAQ question={'Will there be food?'} answer={'Yes! We will have some meals and snacks, but we encourage you to bring some with you as well.'}/></li>
                             <li><FAQ question={'What should I bring?'} answer={'Bring your laptop, charger, extension cords, personal water bottles, and any hardware you plan to use.'}/></li>
                             <li><FAQ question={'What is a hackathon?'} answer={'A hackathon is an event where people design and develop software projects in 36 hours.'}/></li>
