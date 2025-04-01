@@ -25,7 +25,7 @@ function Navbar() {
                         <a href="https://www.linkedin.com/company/bearhacks/" target="_blank"><img src={linkedin}/></a>
                     </li>
                     <li className={styles.list_item}>
-                        <a href="https://www.instagram.com/bearhacks/" target="_blank"><img src={instagram}/></a>
+                        <a href="https://www.instagram.com/bear_hacks/" target="_blank"><img src={instagram}/></a>
                     </li>
                     <li className={styles.list_item}>
                         <a href="https://bearhacks2025.devpost.com/" target="_blank"><img src={devpost}/></a>
