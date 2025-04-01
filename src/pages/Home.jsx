@@ -273,7 +273,7 @@ const Home = () => {
                         <Link style={{width: "clamp(min(20rem, 100%), 40vw, 40rem)"}}><img src={indesignn} alt="" /></Link>
                         <Link><img src={royalblue} alt="" /></Link>
                         <Link to="https://incogni.com/" target="_blank"><img src={incogni} alt="" /></Link>
-                        <Link to="https://nordvpn.com/" target="_blank" style={{width: "clamp(7rem, 12vw, 20rem)"}}><img src={nord_vpn} alt="" /></Link>
+                        <Link to="https://nordvpn.com/coupon/deal/?coupon=hackathons&utm_term=&utm_content" target="_blank" style={{width: "clamp(7rem, 12vw, 20rem)"}}><img src={nord_vpn} alt="" /></Link>
                         <Link to="https://nordpass.com/" target="_blank" style={{width: "clamp(7rem, 12vw, 20rem)"}}><img src={nord_pass} alt="" /></Link>
                         <Link to="https://saily.com/" target="_blank"><img src={saily} alt="" /></Link>
                         <Link to="https://balsamiq.com/" target="_blank"><img src={balsamiq} alt="" /></Link>
