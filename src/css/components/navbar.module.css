@@ -33,7 +33,7 @@
     height: 2.625rem;
     flex-shrink: 0;
     aspect-ratio: 22/21;
-    transition: opacity .1s;
+    transition: opacity .1s ease;
 }
 
 #logo:hover {
@@ -94,7 +94,7 @@
     border-radius: 0.3125rem;
     border: 1.5px solid var(--dark);
     color: var(--dark);
-    transition: background-color .1s, color .1s;
+    transition: background-color .2s ease, color .2s ease;
     line-height: 140%;
     font-size: 1rem;
 }

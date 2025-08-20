@@ -22,25 +22,25 @@ function Navbar() {
                         <img id={styles.mini_logo} src={logo} alt="BearHacks logo" />
                     </li>
                     <li className={styles.list_item}>
-                        <a href="https://www.linkedin.com/company/bearhacks/" target="_blank"><img src={linkedin}/></a>
+                        <a href="https://www.linkedin.com/company/bearhacks/" target="_blank"><img src={linkedin} /></a>
                     </li>
                     <li className={styles.list_item}>
-                        <a href="https://www.instagram.com/bear_hacks/" target="_blank"><img src={instagram}/></a>
+                        <a href="https://www.instagram.com/bear_hacks/" target="_blank"><img src={instagram} /></a>
                     </li>
                     <li className={styles.list_item}>
-                        <a href="https://bearhacks2025.devpost.com/" target="_blank"><img src={devpost}/></a>
+                        <a href="https://bearhacks2025.devpost.com/" target="_blank"><img src={devpost} /></a>
                     </li>
                     <li className={styles.list_item}>
-                        <a href="https://discord.gg/g4d9A5R9Jc" target="_blank"><img src={discord}/></a>
+                        <a href="https://discord.gg/g4d9A5R9Jc" target="_blank"><img src={discord} /></a>
                     </li>
                     <li id={styles.register_link} className={styles.list_item}>
-                        <a href="https://forms.gle/BaQ8qmwdyswubvnf6" target="_blank">Register</a>
+                        <a href="https://forms.gle/Mog1WCJvhAxCpPU77" target="_blank">Early Bear List</a>
                     </li>
                     <div className={`${styles.list_item} ${styles.register_button}`}>
-                        <a href="https://forms.gle/BaQ8qmwdyswubvnf6" target="_blank">Register</a>
+                        <a href="https://forms.gle/Mog1WCJvhAxCpPU77" target="_blank">Early Bear List</a>
                     </div>
                 </ul>
-                <div className={styles.burger} onClick={() => setToggled(!toggled)}> 
+                <div className={styles.burger} onClick={() => setToggled(!toggled)}>
                     <div />
                     <div />
                     <div />

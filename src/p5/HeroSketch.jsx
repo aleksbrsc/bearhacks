@@ -20,6 +20,7 @@ function HeroSketch({button}) {
             let bee_flapped;
             let beeFrames = [];
             let smallBeeFrames = [];
+            let grabbedBoid = null;
 
             p.preload = () => {
                 bee = p.loadImage(bearbee);
@@ -61,14 +62,14 @@ function HeroSketch({button}) {
                 trails = trails.filter(t => t.alpha > 0);
 
                 for (let b of boids){
-                    b.flock(boids, hoveredRef.current);
+                    b.flock(boids, hoveredRef.current, grabbedBoid);
                     b.update();
                     let frames = smallBeeFrames;
                     if (b.radius != 25){
                         frames = beeFrames;
                     }
                     b.show(frames);
-                    if (p.frameCount % 15 == 0){
+                    if (p.frameCount % 15 == 0 && !b.isGrabbed){
                         trails.push({pos: p.createVector(b.position.x, b.position.y), alpha: 1});
                     }
                 }
@@ -77,6 +78,26 @@ function HeroSketch({button}) {
             // Handle resize
             p.windowResized = () => {
                 p.resizeCanvas(sketchRef.current.offsetWidth, sketchRef.current.offsetHeight);
+            };
+            
+            // Mouse interaction for grabbing bees
+            p.mousePressed = () => {
+                if (hoveredRef.current) return; // Don't grab when hovering button
+                
+                for (let b of boids) {
+                    if (b.isMouseOver()) {
+                        grabbedBoid = b;
+                        b.grab();
+                        break;
+                    }
+                }
+            };
+            
+            p.mouseReleased = () => {
+                if (grabbedBoid) {
+                    grabbedBoid.release();
+                    grabbedBoid = null;
+                }
             };
         };
 

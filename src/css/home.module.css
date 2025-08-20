@@ -30,6 +30,7 @@
 #hero_header h1 {
     color: var(--dark);
     text-align: center;
+    text-shadow: 0 0 5px var(--light);
 
     /* Headline-xlg */
     margin: 0;
@@ -37,6 +38,7 @@
     font-style: normal;
     font-weight: 150;
     line-height: 120%;
+    letter-spacing: -2px;
 }
 
 #hero_header p {
@@ -47,13 +49,14 @@
     font-style: normal;
     font-weight: 87;
     line-height: 140%;
+    letter-spacing: -0.5px;
 }
 
 #hero_header strong {
     font-weight: 150;
 }
 
-#hero_container a {
+#hero_button {
     margin-top: 2rem;
     display: inline-flex;
     padding: 0.625rem 1.5rem;
@@ -62,12 +65,33 @@
     gap: 1rem;
     border-radius: 0.3125rem;
     border: 1.5px solid var(--dark);
-    transition: background-color 0.1s, color 0.1s;
+    background-color: var(--light);
+    font-weight: 115;
+    transition: background-color 0.2s, color 0.2s;
 }
 
-#hero_container a:hover {
+#hero_button:hover {
     background-color: var(--dark);
     color: var(--light);
+}
+
+.sponsor_note {
+    margin-top: 2rem;
+    color: #646464;
+    font-size: 0.9375rem;
+    text-align: center;
+    font-weight: 87;
+}
+
+.sponsor_note a {
+    color: var(--dark);
+    text-decoration: underline;
+    font-weight: 115;
+    transition: color 0.2s ease;
+}
+
+.sponsor_note a:hover {
+    color: #F08700;
 }
 
 #countdown_section {
@@ -94,28 +118,42 @@
     position: absolute;
     background: white;
     border: 1px solid black;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     max-width: clamp(10rem, 25vw, 18rem);
     padding: 10px;
     pointer-events: none;
     opacity: 0;
-    transform: translateY(-2rem);
-    transition: opacity .3s ease-in, transform .2s ease-in;
+    visibility: hidden;
+    transform: translateY(-1rem) scale(0.95);
+    transition:
+        opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .tooltip.active {
     opacity: 1;
-    transform: translateY(0);
+    visibility: visible;
+    transform: translateY(0) scale(1);
     z-index: 9;
+    transition:
+        opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 0s;
 }
 
-.tooltip h3{
+.tooltip h3 {
     background: var(--dark);
     color: white;
     margin: 0;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
     text-align: center;
     font-weight: 400;
     letter-spacing: 2px;
     font-size: clamp(0.3rem, 2vw, 1.17em);
+    border-radius: 4px 4px 0 0;
     /* text-wrap: nowrap;
     white-space: none; */
 }
@@ -123,7 +161,9 @@
 .tooltip p {
     text-align: center;
     font-size: clamp(0.2rem, 2vw, 1rem);
-    margin-block: clamp(0.2em, 1vw, 1em);
+    margin: 0;
+    padding: 0 0.5rem 0.25rem 0.5rem;
+    line-height: 1.4;
 }
 
 #mentors_tooltip {
@@ -164,16 +204,22 @@
 .bear_img {
     width: 100%;
     cursor: pointer;
-    transition: scale .2s ease-in;
+    transition:
+        scale 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        filter 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+    filter: brightness(1) saturate(1);
 }
 
 .bear_img:hover {
     scale: 1.05;
+    filter: brightness(1.1) saturate(1.15);
+    transform: translateY(-2px);
 }
 
 #bear_praying {
     width: 19%;
-
     position: absolute;
     left: 3%;
     top: 14%;
@@ -189,7 +235,6 @@
 #jesus_bear {
     width: 27%;
     position: absolute;
-
     left: 48.5%;
     top: 8%;
     transform: translateX(-50%);
@@ -202,7 +247,7 @@
     top: 21.5%;
 }
 
-#tetervak_bear {
+#solid_bear {
     width: 20%;
     position: absolute;
     right: 2%;
@@ -277,6 +322,7 @@
     bottom: -10%;
     color: #9B9389;
 }
+
 .countdown_pair {
     display: flex;
     flex-flow: row nowrap;
@@ -298,7 +344,10 @@
     opacity: 0.1;
 }
 
+
 #breakdown_section {
+    --animation-duration: 0.2s;
+    --animation-easing: ease;
     margin-top: 7rem;
     display: flex;
     justify-content: center;
@@ -319,7 +368,7 @@
 
 #breakdown_container h1 {
     font-weight: 400;
-    font-size: clamp(1.5rem, 5vw, 2.5rem);    
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
     text-align: center;
 }
 
@@ -346,7 +395,7 @@
     background: #2e2e2e;
     color: white;
 
-    transition: background .3s ease-in, color .3s ease-in, opacity .2s ease;
+    transition: background-color var(--animation-duration) var(--animation-easing), color var(--animation-duration) var(--animation-easing), opacity var(--animation-duration) var(--animation-easing);
 }
 
 .breakdown_index::after {
@@ -381,6 +430,7 @@
     from {
         width: 0;
     }
+
     to {
         width: 100%;
     }
@@ -395,7 +445,7 @@
     display: flex;
     flex-flow: column nowrap;
     flex: 1;
-    max-width: 20rem;
+    width: 100%;
     min-width: 15rem;
     min-height: 25rem;
     position: relative;
@@ -425,16 +475,35 @@
     height: 1.2rem;
 }
 
+.prize_img_container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
 .prize_img {
     position: absolute;
     width: 90%;
-    bottom: 0;
+    bottom: -1rem;
+}
+
+.prize_card:nth-child(1) .prize_img {
+    max-height: 12rem;
+    width: auto;
+    border-radius: 0.5rem;
+}
+
+.prize_card:last-child .prize_img {
+    margin-left: 6rem;
+    width: 60%;
 }
 
 .breakdown_content {
     display: none;
     flex-flow: row wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     gap: 1rem;
 
     width: 100%;
@@ -496,7 +565,7 @@
     width: 100%;
 }
 
-#sponsor_logos a{
+#sponsor_logos a {
     /* position: relative; */
     display: flex;
     justify-content: center;
@@ -510,7 +579,8 @@
 }
 
 .faq {
-    --animation-duration: 0.15s;
+    --animation-duration: 0.4s;
+    --animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -527,12 +597,12 @@
     cursor: pointer;
 }
 
-.question_container:hover .faq_toggle{
+.question_container:hover .faq_toggle {
     background: rgba(0, 0, 0, 0.1);
 }
 
 .question {
-    font-weight: 400;
+    font-weight: 130;
     margin-block: 1.2rem;
 }
 
@@ -544,12 +614,13 @@
     min-height: 30px;
     position: relative;
     border-radius: 50%;
+    transition: background-color 0.2s var(--animation-easing), transform 0.2s var(--animation-easing);
 }
 
 .faq_toggle div {
-    background: #F08700;
+    background-color: #F08700;
     border-radius: 2px;
-    transition: width var(--animation-duration) ease-in-out, height var(--animation-duration) ease-in-out;
+    transition: width var(--animation-duration) var(--animation-easing), height var(--animation-duration) var(--animation-easing), transform var(--animation-duration) var(--animation-easing);
 }
 
 .faq_toggle .vertical {
@@ -563,22 +634,46 @@
     height: 4px;
 }
 
-.faq_toggle[data-toggled=true] .vertical{
+.faq_toggle[data-toggled=true] .vertical {
     width: 75%;
     height: 4px;
+    transform: rotate(90deg);
+}
+
+.faq_toggle[data-toggled=true] {
+    transform: rotate(45deg);
 }
 
 .answer {
     margin: 0;
     max-height: 0px;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
     overflow: hidden;
-    transition: max-height var(--animation-duration) ease-out;
-
+    opacity: 0;
+    transform: translateY(-8px);
+    transition:
+        max-height var(--animation-duration) var(--animation-easing),
+        padding var(--animation-duration) var(--animation-easing),
+        margin-bottom var(--animation-duration) var(--animation-easing),
+        opacity calc(var(--animation-duration) * 0.7) var(--animation-easing) calc(var(--animation-duration) * 0.1),
+        transform var(--animation-duration) var(--animation-easing);
 }
 
-.answer.toggled{
-    max-height: 20rem;
-    transition: max-height calc(var(--animation-duration) * 1.2) ease-in;
+.answer.toggled {
+    max-height: 8rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+        max-height var(--animation-duration) var(--animation-easing),
+        padding var(--animation-duration) var(--animation-easing),
+        margin-bottom var(--animation-duration) var(--animation-easing),
+        opacity calc(var(--animation-duration) * 0.7) var(--animation-easing) calc(var(--animation-duration) * 0.15),
+        transform var(--animation-duration) var(--animation-easing);
 }
 
 #faq_section {
