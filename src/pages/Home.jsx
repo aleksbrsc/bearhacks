@@ -48,7 +48,7 @@ const milliInMinute = 1000 * 60;
 const milliInSecond = 1000;
 
 const Countdown = () => {
-    const targetDate = new Date("Fri, 28 Mar 2025 21:00:00 GMT");
+    const targetDate = new Date("Fri, 24 April 2026 21:00:00 GMT");
     const [timeToDate, setTimeToDate] = useState(getTimeToDate(targetDate));
 
     useEffect(() => {
@@ -182,7 +182,7 @@ const Home = () => {
                 <div id={styles.hero_container}>
                     <div id={styles.hero_header}>
                         <h1>BearHacks 2026</h1>
-                        <p>Sheridan’s annual hybrid hackathon, for students all across the GTA!</p>
+                        <p>Sheridan’s annual hybrid hackathon, for students all across the GTA<br/>April 24-26th — more details coming soon! 🐻</p>
                     </div>
                     <a id={styles.hero_button} href="https://forms.gle/Mog1WCJvhAxCpPU77" target="_blank" ref={buttonRef}>Stay up to Date</a>
                     <p className={styles.sponsor_note}>Interested in sponsoring? Email us at <a href="mailto:bearhacks2026@gmail.com" target="_blank">bearhacks2026@gmail.com</a></p>
@@ -296,7 +296,7 @@ const Home = () => {
                     <h1>FREQUENTLY ASKED QUESTIONS</h1>
                     <div id={styles.faq_list_container}>
                         <ul className={styles.faq_list}>
-                            <li><FAQ question={'When is BearHacks?'} answer={'The next BearHacks will likely be in March 2026, as our first BearHacks took place March 28-30th 2025! Join the mailing list to be notified of future BearHacks events!'} /></li>
+                            <li><FAQ question={'When is BearHacks?'} answer={'BearHacks 2026 will take place on April 24-26th, 2026 — join the mailing list to be notified!'} /></li>
                             <li><FAQ question={'Where are you located?'} answer={'Sheridan Hazel McCallion (HMC) campus, C-Wing 5th floor. It\'s the building closest to the Square One Cineplex!'} /></li>
                             <li><FAQ question={'Will there be food?'} answer={'Yes! We will have plenty of meals and snacks every day!'} /></li>
                             <li><FAQ question={'What should I bring?'} answer={'Bring your laptop, charger, extension cords, personal water bottles, and any hardware you plan to use.'} /></li>
