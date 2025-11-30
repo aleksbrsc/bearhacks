@@ -94,6 +94,40 @@
     color: #F08700;
 }
 
+.hexagon_bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hexagon {
+    position: absolute;
+    width: 120px;
+    height: 104px;
+    animation: hexagonBreathe 3s ease-in-out infinite;
+}
+
+.hexagon polygon {
+    fill: none;
+    stroke: hsl(0, 0%, 88%);
+    stroke-width: 1.5;
+    transition: stroke 0.3s ease;
+}
+
+@keyframes hexagonBreathe {
+    0%, 100% {
+        stroke: hsl(0, 0%, 95%);
+    }
+    50% {
+        stroke: hsl(0, 0%, 75%);
+    }
+}
+
 #countdown_section {
     display: flex;
     justify-content: center;

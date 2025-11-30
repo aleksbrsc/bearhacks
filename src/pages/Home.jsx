@@ -181,6 +181,86 @@ const Home = () => {
         <>
             <section id={styles.hero_section}>
                 {buttonLoaded && <HeroSketch button={buttonRef.current} />}
+                {/* Decorative hexagons */}
+                <div className={styles.hexagon_bg}>
+                    {/* Left strand 1 - emerges from top, flows down-right */}
+                    <svg className={styles.hexagon} style={{left: '10px', top: '-50px'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                        <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
+                    </svg>
+                    <svg className={styles.hexagon} style={{left: '10px', top: '54px'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                        <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
+                    </svg>
+                    <svg className={styles.hexagon} style={{left: '100px', top: '106px'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                        <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
+                    </svg>
+                    <svg className={styles.hexagon} style={{left: '190px', top: '158px'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                        <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
+                    </svg>
+                    
+                    {/* Left strand 2 - emerges from left, flows right */}
+                    <svg className={styles.hexagon} style={{left: '-60px', top: '230px', animationDelay: '0s'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                        <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
+                    </svg>
+                    <svg className={styles.hexagon} style={{left: '30px', top: '282px', animationDelay: '0.5s'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                        <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
+                    </svg>
+                    <svg className={styles.hexagon} style={{left: '120px', top: '334px', animationDelay: '1s'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                        <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
+                    </svg>
+                    <svg className={styles.hexagon} style={{left: '210px', top: '282px', animationDelay: '1.5s'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                        <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
+                    </svg>
+                    
+                    {/* Left strand 3 - emerges from bottom, flows up-right */}
+                    <svg className={styles.hexagon} style={{left: '20px', top: '600px'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                        <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
+                    </svg>
+                    <svg className={styles.hexagon} style={{left: '110px', top: '548px'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                        <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
+                    </svg>
+                    <svg className={styles.hexagon} style={{left: '200px', top: '496px'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                        <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
+                    </svg>
+                    
+                    {/* Right strand 1 - emerges from top, flows down-left */}
+                    <svg className={styles.hexagon} style={{right: '10px', top: '-50px'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                        <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
+                    </svg>
+                    <svg className={styles.hexagon} style={{right: '10px', top: '54px'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                        <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
+                    </svg>
+                    <svg className={styles.hexagon} style={{right: '100px', top: '106px'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                        <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
+                    </svg>
+                    <svg className={styles.hexagon} style={{right: '190px', top: '158px'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                        <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
+                    </svg>
+                    
+                    {/* Right strand 2 - emerges from right, flows left */}
+                    <svg className={styles.hexagon} style={{right: '-60px', top: '240px', animationDelay: '0s'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                        <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
+                    </svg>
+                    <svg className={styles.hexagon} style={{right: '30px', top: '292px', animationDelay: '0.5s'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                        <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
+                    </svg>
+                    <svg className={styles.hexagon} style={{right: '120px', top: '344px', animationDelay: '1s'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                        <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
+                    </svg>
+                    <svg className={styles.hexagon} style={{right: '210px', top: '292px', animationDelay: '1.5s'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                        <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
+                    </svg>
+                    
+                    {/* Right strand 3 - emerges from bottom, flows up-left */}
+                    <svg className={styles.hexagon} style={{right: '30px', top: '600px'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                        <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
+                    </svg>
+                    <svg className={styles.hexagon} style={{right: '120px', top: '548px'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                        <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
+                    </svg>
+                    <svg className={styles.hexagon} style={{right: '210px', top: '496px'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                        <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
+                    </svg>
+                </div>
                 <div id={styles.hero_container}>
                     <div id={styles.hero_header}>
                         <h1>BearHacks 2026</h1>
