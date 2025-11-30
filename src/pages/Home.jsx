@@ -133,7 +133,9 @@ const FAQ = ({ question, answer }) => {
                     <div className={styles.vertical}></div>
                 </div>
             </div>
-            <p className={`${styles.answer} ${toggled ? styles.toggled : ''}`}>{answer}</p>
+            <div className={`${styles.answer_wrapper} ${toggled ? styles.toggled : ''}`}>
+                <p className={styles.answer}>{answer}</p>
+            </div>
         </div>
     );
 }

@@ -644,9 +644,18 @@
     transform: rotate(45deg);
 }
 
+.answer_wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows var(--animation-duration) var(--animation-easing);
+}
+
+.answer_wrapper.toggled {
+    grid-template-rows: 1fr;
+}
+
 .answer {
     margin: 0;
-    max-height: 0px;
     padding-top: 0;
     padding-bottom: 0;
     margin-bottom: 0;
@@ -654,26 +663,23 @@
     opacity: 0;
     transform: translateY(-8px);
     transition:
-        max-height var(--animation-duration) var(--animation-easing),
-        padding var(--animation-duration) var(--animation-easing),
-        margin-bottom var(--animation-duration) var(--animation-easing),
         opacity calc(var(--animation-duration) * 0.7) var(--animation-easing) calc(var(--animation-duration) * 0.1),
-        transform var(--animation-duration) var(--animation-easing);
+        transform var(--animation-duration) var(--animation-easing),
+        padding var(--animation-duration) var(--animation-easing),
+        margin-bottom var(--animation-duration) var(--animation-easing);
 }
 
-.answer.toggled {
-    max-height: 8rem;
+.answer_wrapper.toggled .answer {
     padding-top: 0.75rem;
     padding-bottom: 0.25rem;
     margin-bottom: 0.5rem;
     opacity: 1;
     transform: translateY(0);
     transition:
-        max-height var(--animation-duration) var(--animation-easing),
-        padding var(--animation-duration) var(--animation-easing),
-        margin-bottom var(--animation-duration) var(--animation-easing),
         opacity calc(var(--animation-duration) * 0.7) var(--animation-easing) calc(var(--animation-duration) * 0.15),
-        transform var(--animation-duration) var(--animation-easing);
+        transform var(--animation-duration) var(--animation-easing),
+        padding var(--animation-duration) var(--animation-easing),
+        margin-bottom var(--animation-duration) var(--animation-easing);
 }
 
 #faq_section {
