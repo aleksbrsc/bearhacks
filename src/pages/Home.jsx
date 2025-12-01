@@ -2,6 +2,7 @@ import styles from "@css/home.module.css";
 import HeroSketch from "@p5/HeroSketch";
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import CircularGallery from "@components/CircularGallery";
 // import hero_background from "@assets/images/hero_background.svg";
 // import hero_foreground from "@assets/images/hero_foreground.svg";
 
@@ -20,7 +21,7 @@ import first_place_career from "@assets/images/breakdown/scotiabank_digital.jpg"
 import recognition from "@assets/images/breakdown/recognition.svg";
 import cash_icon from "@assets/images/breakdown/cash_icon.svg";
 import networking_icon from "@assets/images/breakdown/networking_icon.svg";
-import recognition_icon from "@assets/images/breakdown/logo_icon.svg";
+import recognition_icon from "@assets/images/logos/logo_icon.svg";
 
 import perplexity from "@assets/images/sponsor_logos/perplexity_logo.svg";
 import gdg from "@assets/images/sponsor_logos/gdg_logo.svg";
@@ -36,16 +37,47 @@ import indesignn from "@assets/images/sponsor_logos/indesignn_logo.svg";
 import royalblue from "@assets/images/sponsor_logos/royalblue_logo.svg";
 import gongcha from "@assets/images/sponsor_logos/gong_cha_logo.png";
 import la_carnita from "@assets/images/sponsor_logos/la_carnita_logo.png";
+import bearhacks_logo_icon from "@assets/images/logos/icon.svg";
 import vitos from "@assets/images/sponsor_logos/vitos_logo.png";
 import rabba_logo from "@assets/images/sponsor_logos/rabba_logo.png";
 import icp from "@assets/images/sponsor_logos/icp_logo.png";
 
 import faq_header from "@assets/images/faq_header.png";
 
+import adam from "@assets/images/team/bh_adam.jpeg";
+import ahmed from "@assets/images/team/bh_ahmed.jpeg";
+import aleks from "@assets/images/team/bh_aleks.jpeg";
+import aman from "@assets/images/team/bh_aman.jpeg";
+import anya from "@assets/images/team/bh_anya.jpeg";
+import connor from "@assets/images/team/bh_connor.jpeg";
+import iman from "@assets/images/team/bh_iman.png";
+import jon from "@assets/images/team/bh_jon.png";
+import rishin from "@assets/images/team/bh_rishin.jpeg";
+import sebastian from "@assets/images/team/bh_sebastian.jpeg";
+import taimoor from "@assets/images/team/bh_taimoor.png";
+import vidhi from "@assets/images/team/bh_vidhi.jpeg";
+import william from "@assets/images/team/bh_william.jpeg";
+
 const milliInDay = 1000 * 60 * 60 * 24;
 const milliInHour = 1000 * 60 * 60;
 const milliInMinute = 1000 * 60;
 const milliInSecond = 1000;
+
+const teamMembers = [
+    { image: aleks, name: 'Aleks', role: 'Co-Director' },
+    { image: taimoor, name: 'Taimoor', role: 'Co-Director' },
+    { image: adam, name: 'Adam', role: 'Organizer' },
+    { image: ahmed, name: 'Ahmed', role: 'Organizer' },
+    { image: aman, name: 'Aman', role: 'Organizer' },
+    { image: anya, name: 'Anya', role: 'Organizer' },
+    { image: connor, name: 'Connor Uhrig', role: 'Organizer' },
+    { image: iman, name: 'Iman', role: 'Organizer' },
+    { image: jon, name: 'Jon', role: 'Organizer' },
+    { image: rishin, name: 'Rishin', role: 'Organizer' },
+    { image: sebastian, name: 'Sebastian', role: 'Organizer' },
+    { image: vidhi, name: 'Vidhi', role: 'Organizer' },
+    { image: william, name: 'William', role: 'Organizer' }
+ ];
 
 const Countdown = () => {
     const targetDate = new Date("Fri, 24 April 2026 21:00:00 GMT");
@@ -198,16 +230,16 @@ const Home = () => {
                     </svg>
                     
                     {/* Left strand 2 - emerges from left, flows right */}
-                    <svg className={styles.hexagon} style={{left: '-60px', top: '230px', animationDelay: '0s'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                    <svg className={styles.hexagon} style={{left: '-60px', top: '270px', animationDelay: '0s'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
                         <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
                     </svg>
-                    <svg className={styles.hexagon} style={{left: '30px', top: '282px', animationDelay: '0.5s'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                    <svg className={styles.hexagon} style={{left: '30px', top: '322px', animationDelay: '0.5s'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
                         <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
                     </svg>
-                    <svg className={styles.hexagon} style={{left: '120px', top: '334px', animationDelay: '1s'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                    <svg className={styles.hexagon} style={{left: '120px', top: '374px', animationDelay: '1s'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
                         <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
                     </svg>
-                    <svg className={styles.hexagon} style={{left: '210px', top: '282px', animationDelay: '1.5s'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                    <svg className={styles.hexagon} style={{left: '210px', top: '322px', animationDelay: '1.5s'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
                         <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
                     </svg>
                     
@@ -237,16 +269,16 @@ const Home = () => {
                     </svg>
                     
                     {/* Right strand 2 - emerges from right, flows left */}
-                    <svg className={styles.hexagon} style={{right: '-60px', top: '240px', animationDelay: '0s'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                    <svg className={styles.hexagon} style={{right: '-60px', top: '280px', animationDelay: '0s'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
                         <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
                     </svg>
-                    <svg className={styles.hexagon} style={{right: '30px', top: '292px', animationDelay: '0.5s'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                    <svg className={styles.hexagon} style={{right: '30px', top: '332px', animationDelay: '0.5s'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
                         <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
                     </svg>
-                    <svg className={styles.hexagon} style={{right: '120px', top: '344px', animationDelay: '1s'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                    <svg className={styles.hexagon} style={{right: '120px', top: '384px', animationDelay: '1s'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
                         <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
                     </svg>
-                    <svg className={styles.hexagon} style={{right: '210px', top: '292px', animationDelay: '1.5s'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
+                    <svg className={styles.hexagon} style={{right: '210px', top: '332px', animationDelay: '1.5s'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 104">
                         <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
                     </svg>
                     
@@ -391,6 +423,20 @@ const Home = () => {
                             <li><FAQ question={'Do I need to come in person to for the workshops?'} answer={'The workshops will be held in person, with livestreams on online through Twitch and Discord. You can join by getting the link in our discord server!'} /></li>
                             <li><FAQ question={'Can anyone who is not from Sheridan College come?'} answer={'Yes, non-Sheridan students are welcome to join!'} /></li>
                         </ul>
+                    </div>
+                </div>
+            </section>
+            <section id={styles.team_section}>
+                <div id={styles.team_container}>
+                    <h1>MEET THE TEAM</h1>
+                    <div style={{ height: '300px', width: '100%', position: 'relative' }}>
+                        <CircularGallery 
+                            items={teamMembers}
+                            bend={2} 
+                            textColor="#000" 
+                            borderRadius={0.05} 
+                            scrollEase={0.02}
+                        />
                     </div>
                 </div>
             </section>
