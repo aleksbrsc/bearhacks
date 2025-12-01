@@ -31,13 +31,13 @@ function HeroSketch({button}) {
                 beeFrames.push(bee, bee_flapped);
 
                 let small_bee = bee.get();
-                small_bee.resize(28, 0)
+                small_bee.resize(42, 0)
                 let small_bee_flapped = bee_flapped.get();
-                small_bee_flapped.resize(28, 0)
+                small_bee_flapped.resize(42, 0)
                 smallBeeFrames.push(small_bee, small_bee_flapped)
 
 
-                let sizes = [35, 25];
+                let sizes = [52, 38];
                 // console.log(beeFrames)
                 for (let i=0;i<boidCount;i++){
                     boids.push(new Boid(p, button_rect, sizes[Math.floor(Math.random() * 2)]));
@@ -65,7 +65,7 @@ function HeroSketch({button}) {
                     b.flock(boids, hoveredRef.current, grabbedBoid);
                     b.update();
                     let frames = smallBeeFrames;
-                    if (b.radius != 25){
+                    if (b.radius != 38){
                         frames = beeFrames;
                     }
                     b.show(frames);
