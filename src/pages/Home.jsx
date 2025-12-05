@@ -318,7 +318,7 @@ const Home = () => {
                         </div>
                         <div id={styles.hybrid_tooltip} className={`${styles.tooltip} ${bearHovered == 1 ? styles.active : ''}`}>
                             <h3>HYBRID EVENT</h3>
-                            <p>Hack from the comfort of your own home, or in-person if you’ve been accepted (but no overnight stays!)</p>
+                            <p>Hack from the comfort of your own home, or in-person if you’ve been accepted!</p>
                         </div>
                         <div id={styles.jesus_bear} onMouseEnter={() => setBearHovered(2)} onMouseLeave={() => setBearHovered(-1)}>
                             <img src={jesus_bear} alt="" className={styles.bear_img} />
