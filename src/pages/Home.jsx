@@ -311,7 +311,7 @@ const Home = () => {
                         </div>
                         <div id={styles.mentors_tooltip} className={`${styles.tooltip} ${bearHovered == 0 ? styles.active : ''}`}>
                             <h3>MENTORS</h3>
-                            <p>Get access to developer and design mentors on the Discord on your 36-hour hacking journey.</p>
+                            <p>Get access to mentors via Discord on your 36-hour hacking journey.</p>
                         </div>
                         <div id={styles.bear_sleeping} onMouseEnter={() => setBearHovered(1)} onMouseLeave={() => setBearHovered(-1)}>
                             <img src={bear_sleeping} alt="" className={styles.bear_img} />
@@ -325,7 +325,7 @@ const Home = () => {
                         </div>
                         <div id={styles.support_tooltip} className={`${styles.tooltip} ${bearHovered == 2 ? styles.active : ''}`}>
                             <h3>SUPPORT TICKETS</h3>
-                            <p>Having trouble? Open a support ticket on the discord and our online support will be there to assist you!</p>
+                            <p>Having trouble during the event? Open a support ticket on the Discord and we'll assist you!</p>
                         </div>
                         <div id={styles.bear_thinking} onMouseEnter={() => setBearHovered(3)} onMouseLeave={() => setBearHovered(-1)}>
                             <img src={bear_thinking} alt="" className={styles.bear_img} />
