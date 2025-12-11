@@ -296,7 +296,7 @@ const Home = () => {
                 <div id={styles.hero_container}>
                     <div id={styles.hero_header}>
                         <h1>BearHacks 2026</h1>
-                        <p>Sheridan’s annual hybrid hackathon, for students all across the GTA<br/>April 24-26th — more details coming soon! 🐻</p>
+                        <p>Sheridan’s largest annual hackathon, for students all across the GTA<br/>April 24-26th — more details coming soon! 🐻</p>
                     </div>
                     <a id={styles.hero_button} href="https://forms.gle/Mog1WCJvhAxCpPU77" target="_blank" ref={buttonRef}>Stay up to Date</a>
                     <p className={styles.sponsor_note}>Interested in sponsoring? Email us at <a href="mailto:bearhacks2026@gmail.com" target="_blank">bearhacks2026@gmail.com</a></p>
@@ -317,8 +317,8 @@ const Home = () => {
                             <img src={bear_sleeping} alt="" className={styles.bear_img} />
                         </div>
                         <div id={styles.hybrid_tooltip} className={`${styles.tooltip} ${bearHovered == 1 ? styles.active : ''}`}>
-                            <h3>HYBRID EVENT</h3>
-                            <p>Hack from the comfort of your own home, or in-person if you’ve been accepted!</p>
+                            <h3>GET CREATIVE</h3>
+                            <p>Got a new app idea? Check out our sponsors and prize tracks to win big while trying out new tech.</p>
                         </div>
                         <div id={styles.jesus_bear} onMouseEnter={() => setBearHovered(2)} onMouseLeave={() => setBearHovered(-1)}>
                             <img src={jesus_bear} alt="" className={styles.bear_img} />
